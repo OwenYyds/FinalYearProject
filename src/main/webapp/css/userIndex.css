@@ -1,0 +1,367 @@
+html,body{
+    width: 100vw;
+    overflow-x: hidden;
+}
+a{
+    text-decoration: none;
+    color: #ecf0f1;
+}
+.box{
+    margin: 0 auto;
+    height: 980px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 10px solid black;
+}
+.banner{
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.banner img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+    position: absolute;
+    object-position: center center;
+}
+.banner::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(to bottom,rgba(102, 102, 102, 0.2),rgba(0, 0, 0, 0.7));
+}
+.banner-content{
+    height: 100%;
+    position: relative;
+}
+.navbar{
+    position: relative;
+    z-index: 999;
+}
+.navStyle{
+    padding: 3rem 5rem 2rem 5rem;
+}
+.navbar-toggler {
+    position: relative;
+}
+
+.navStyle .logo-text{
+    text-decoration: none;
+    color: #f1f2f6;
+    font-size: 2.5rem;
+}
+.navStyle .nav-item{
+    margin: 0rem 1rem;
+}
+.navStyle .nav-item>a{
+    color: #f1f2f6 !important;
+    letter-spacing: 0.2rem;
+    font-size: 1.5rem;
+    transition: 0.5s;
+}
+.navStyle .nav-item>a:hover{
+    color: #d2dae2 !important;
+    text-shadow: 5px 5px 4px  rgba(255, 255, 255, 0.342);
+}
+.nav-bar-icon{
+    position: absolute;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    color: #f1f2f6;
+}
+.banner-text{
+    display: flex;
+    justify-content: center;
+}
+.banner-title{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+/*     transition: 0.5s; */
+    z-index: 999;
+    
+}
+.banner-title .Cname{
+    font-weight: 100;
+    font-size: 2rem;
+    color: #ecf0f1;
+}
+.banner-title .Ename{
+    font-weight: 100;
+    font-size: 1rem;
+    color: #bdc3c7;
+}
+.banner-title:hover{
+    text-shadow: 5px 5px 4px  rgba(255, 255, 255, 0.342);
+    cursor: pointer;
+}
+
+.banner-bottom{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 1rem 0rem;
+}
+.line-design{
+    display: flex;
+    width: 100%;
+}
+.line-design .line{
+    flex: 1;
+}
+.line-design .line>hr{
+    width: 100%;
+    height: 2px;
+    opacity: 1;
+    color: #bdc3c7;
+}
+.line-design .radian{
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.line-design .radian .radian-line{
+    position: absolute;
+    width: 380px;
+    height: 190px;
+    top: -190px;
+    border-radius: 190px 190px 0 0;
+    border: 1px solid white;
+    border-bottom: none;
+    transition: 0.5s;
+}
+.banner-title:hover ~ .radian-line{
+    border: 6px solid white;
+    border-bottom: none;
+}
+.img-control{
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    
+}
+.next{
+    position: absolute;
+    right: 0;
+    z-index: 999;
+}
+.prev{
+    position: absolute;
+    z-index: 999;
+    left: 0;
+}
+.next-btn,.prev-btn{
+    cursor: pointer;
+    font-size: 4rem !important;
+    color: white;
+}
+.hot-game{
+    padding: 5rem 0rem 2rem 0rem;
+    background-color: #ecf0f1;
+}
+.topline{
+    padding: 2rem 0rem 5rem 0rem;
+    background-color: #ecf0f1;
+}
+.hot-game-header h2,.top-line-header h2{
+    letter-spacing: 0.2rem;
+    padding: 0.5rem 1rem;
+    color: #2d3436;
+    position: relative;
+}
+.hot-game-header h2 a,.top-line-header h2 a{
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    font-size: 1rem;
+    color: #0984e3;
+}
+.hot-game-header .hot-hr{
+    height: 2px;
+    opacity: 1;
+    color: #b2bec3;
+}
+.hot-game-content{
+    padding: 6rem 1rem;
+    filter:  drop-shadow(4px 4px 8px rgba(0, 0, 0,0.5));
+}
+.hotGame-card{
+    height: 24rem;
+    overflow: hidden;
+    padding: 2rem 2rem;
+}
+.card-cover{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+    cursor: pointer;
+}
+.card-cover::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.8s;
+    overflow: hidden;
+    background: linear-gradient(45deg,transparent 60%,rgba(255, 255, 255, 0.61) 80%);
+}
+.card-cover:hover::after{
+    transform: translateX(10rem) scale(1.5) ;
+}
+
+.hot-game-bg{
+    border-radius: 0rem;
+    width: 100%;
+    height: 100%;
+/*     background: url(../images/BannerImage/banner3.jpg) center center;
+    background-size: cover; */
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+    z-index: 0;
+    transition: 0.5s;
+}
+.card-cover:hover .hot-game-bg{
+    transform: scale(1.1);
+}
+.hot-game-text{
+    position: absolute;
+    display: inline-block;
+    bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: white;
+    transition: 0.5s;
+    overflow: hidden;
+}
+.card-cover::before{
+    content: '点击查看详情';
+    position: absolute;
+    width: 100%;
+    height: 3rem;
+    z-index: 999;
+    text-align: center;
+    background: linear-gradient(to bottom,transparent,rgb(0, 0, 0));
+    color: white;
+    font-size: 0.5rem;
+    left: 0;
+    bottom: -5rem;
+    transition: 0.5s;
+}
+.card-cover:hover .hot-game-text{
+    bottom: 3rem;
+}
+.card-cover:hover::before{
+    bottom: -1rem;
+}
+.top-line-content{
+    padding: 2rem 1rem;
+}
+.top-line-pictures{
+    height: 20rem;
+}
+.carousel-item {
+    height: 100%;
+}
+.carousel-item img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.carousel-title,.news-title{
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+    letter-spacing: 0.5rem;
+}
+.carousel-area,.news{
+    border-right: 1px solid #bdc3c7;
+    padding: 1rem 2rem;
+
+}
+.carousel-caption{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.news-list,.news-list li{
+    list-style: none;
+}
+.news-list{
+    height: 20rem;
+    overflow-y: auto;
+}
+.news-list li{
+    color: #8395a7;
+    padding: 0.5rem 0.5rem;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+nav ~ .nav-hr{
+    opacity: 1;
+    height: 1px ;
+    color: #bdc3c7 ;
+}
+@media screen and (max-width:1600px){
+    html{
+        font-size: 12px;
+    }
+    .box{
+        height: 780px;
+    }
+    .hotGame-card{
+        padding: 2rem;
+        height: 35rem;
+    }
+ 
+}
+@media screen and (max-width:960px) {
+    .box{
+        height: 100vh;
+        
+    }
+    .navStyle{
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .banner img{
+        height: 100vh;
+    }
+    .banner::after{
+        display: none;
+    }
+    .banner-title .Cname{
+        font-weight: 100;
+        font-size: 2rem;
+        color: #ecf0f1;
+    }
+    .line-design .radian .radian-line{
+        display: none;
+    }
+    .banner-title .Ename{
+        font-weight: 100;
+        font-size: 1rem;
+        color: #bdc3c7;
+    }
+    .hotGame-card{
+        padding: 3rem;
+        height: 35rem;
+    }
+}

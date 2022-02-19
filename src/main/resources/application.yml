@@ -1,0 +1,20 @@
+server:
+  port: 80
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///fantsy?serverTimezone=UTC
+      username: root
+      password: 123
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+#      table-prefix: tbl_
+
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    map-underscore-to-camel-case: false

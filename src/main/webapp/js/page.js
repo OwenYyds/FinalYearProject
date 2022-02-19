@@ -1,0 +1,14 @@
+$(function(){
+    $(".userindex").on('click',function(){
+        $(location).attr('href','userIndex.html');
+    })
+    $(".allgame").on('click',function(){
+        $(location).attr('href','game.html');
+    })
+    $(".myinfo").on('click',function(){
+        $(location).attr('href','userinfo.html');
+    })
+    $(".aboutme").on('click',function(){
+        $(location).attr('href','userIndex.html');
+    })
+})

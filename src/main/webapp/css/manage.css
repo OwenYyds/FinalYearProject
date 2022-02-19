@@ -1,0 +1,87 @@
+body{
+    min-width: 1440px;
+}
+.container-box{
+    width: 1440px;
+    margin: 0 auto;
+}
+.top-area{
+    width: 100%;
+    background: url(../images/BannerImage/header3.jpg) no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    box-shadow: 4px 0px 8px 6px rgba(0, 0, 0, 0.459);
+}
+.top-area::after{
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom ,transparent 5%,rgba(68, 68, 68, 0.788));
+}
+.top-nav{
+    padding-bottom: 2rem;
+}
+.game-manage{
+    margin-top: 2rem;
+    padding: 4rem;
+    box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    table-layout: fixed;
+    position: relative;
+}
+.game-manage h2{
+    color: #3498db;
+    font-size: 1.2rem;
+}
+.game-manage hr{
+    height: 0.2rem;
+    color: #3498db;
+}
+.game-table{
+    height: 500px;
+    overflow: auto;
+}
+.game-table tr{
+    font-size: 0.8rem;
+    border-bottom: 0.5px solid #95a5a6;
+    
+}
+.game-table th{
+    padding: 2rem;
+    font-weight: 100;
+    width: 150px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+.game-table td{
+    text-align: center;
+    padding: 0.2rem;
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+      
+}
+.game-plus{
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
+}
+.game-delete{
+    position: absolute;
+    right: 10rem;
+    top: 3rem;
+}
+.game-manage{
+    margin-bottom: 4rem;
+}
+
