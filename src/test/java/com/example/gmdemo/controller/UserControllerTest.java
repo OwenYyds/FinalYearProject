@@ -1,5 +1,6 @@
 package com.example.gmdemo.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.gmdemo.mapper.GameMapper;
 import com.example.gmdemo.mapper.UserMapper;
 import com.example.gmdemo.pojo.Game;
@@ -33,13 +34,16 @@ public class UserControllerTest {
 
     @Test
     void getAllUsers() {
-//        userService.list();
-//        userMapper.selectById(1);
+        User user = new User();
+        String username = "2352335";
+        user.setGender("男");
+        user.setNickname("66666666666");
+        user.setProfile("keep figjhting");
 
-//        gameService.list();
-
-
-
+        QueryWrapper<User> objectQueryWrapper = new QueryWrapper<>();
+        objectQueryWrapper.eq("username", username);
+        userService.getOne(objectQueryWrapper);
+//        userService.updateById(user);
 
 
     }

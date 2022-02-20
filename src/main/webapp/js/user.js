@@ -38,8 +38,9 @@ function userLoad(){
         data: {},
         dataType: "json",
         success: function(res){
-            console.log("getUser::"+res);
-            let loved = [];
+            console.log(res);
+            let loved = [res.loved];
+            console.log("LOVED"+loved)
             $('.getUsername').text(res['nickname']?res['nickname']:res['userID']);
             $('.getGender').text(res['gender']?res['gender']:"保密");
             $('.getBirthday').text(res['birthday']?res['birthday']:"保密");
@@ -51,14 +52,14 @@ function userLoad(){
                     $(this).attr('checked','checked');
                 }
             })
-            loved = res['loved'].split(';')
-            $('.loved-box').each(function(index){
-               for(let i = 0; i<loved.length;i++){
-                if(index == parseInt(loved[i])){
-                    $(this).find('input').attr('checked','checked');
-                }
-               }
-            })
+            // loved = res['loved'].split(';')
+            // $('.loved-box').each(function(index){
+            //    for(let i = 0; i<loved.length;i++){
+            //     if(index == parseInt(loved[i])){
+            //         $(this).find('input').attr('checked','checked');
+            //     }
+            //    }
+            // })
             $('#editNickname').attr('value',res['nickname']?res['nickname']:res['userID']);
             if(res['gender'] == "男"){
                 $('#sex1').attr('checked','checked');
@@ -104,7 +105,7 @@ function lovedEdit(){
     let data = arry.join(";");
     $.ajax({
         type: "POST",
-        url:"/HuanYou/lovedServlet",
+        url:"/users/getUser",
         data: {"loved":data},
         dataType: "text",
         success: function(){
@@ -119,7 +120,7 @@ function headEdit(){
 
     $.ajax({
         type:"POST",
-        url:"/HuanYou/userServlet",
+        url:"/users/getUser",
         data:{"head":data},
         dataType:"text",
         success: function(){

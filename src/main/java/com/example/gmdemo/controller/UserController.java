@@ -6,6 +6,7 @@ import com.example.gmdemo.pojo.User;
 import com.example.gmdemo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,6 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
 
     @Autowired
     private IUserService userService;
@@ -46,9 +46,8 @@ public class UserController {
             return "用户名或密码错误";
         } else {
             //登录成功
-            session.setAttribute("user", user);
-            System.out.println(session.getAttribute("user"));
-            System.out.println("``````````````````````````````````");
+            User LoginUser = userService.getOne(queryWrapper);
+            session.setAttribute("user",LoginUser);
             return "登录成功";
         }
     }
@@ -121,21 +120,20 @@ public class UserController {
         }
     }
 
-
     //获取用户信息
     @GetMapping("getUser")
     @ResponseBody
-    public Object getUserInfo(HttpServletRequest request){
+    public User getUserInfo(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        System.out.println(session.getAttribute("user"));
-        return session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
+        System.out.println(user);
+        return user;
     }
-
 
     //用户自行修改信息
     @PostMapping("edit")
     @ResponseBody
-    public boolean updateUser(HttpServletRequest request){
+    public String updateUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
@@ -143,19 +141,18 @@ public class UserController {
         String gender = request.getParameter("gender");
         String birthday = request.getParameter("birthday");
         String profile = request.getParameter("profile");
-        String head =request.getParameter("head");
+        String head = request.getParameter("head");
 
-        if(nickname != null){
+        if (nickname != null) {
             user.setNickname(nickname);
             user.setGender(gender);
             user.setBirthday(birthday);
             user.setProfile(profile);
-        }
-        else{
+            userService.updateById(user);
+        } else {
             user.setHead(head);
+            userService.updateById(user);
         }
-
-        return true;
-
+        return "修改成功";
     }
 }
