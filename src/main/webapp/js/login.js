@@ -28,7 +28,7 @@ $(function () {
                     $('.usernameInput').addClass('form-error');
                     $('.usernameInput').append(data);
                 } else {
-                    if ($('.usernameInput>input').val().toLowerCase() == "damin") {
+                    if ($('.usernameInput>input').val().toLowerCase() == "admin") {
                         window.location.href = "admin/index.html";
                     } else {
                         window.location.href = "page/userIndex.html";

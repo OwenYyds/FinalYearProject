@@ -9,14 +9,14 @@ $(function(){
 function allGameLoad() {
     $.ajax({
         type: "GET",
-        url: "/HuanYou/gameServlet",
+        url: "/games/getAll",
         data: {},
         dataType: "json",
         success: function (res) {
             let data = [];
             for (let i = 0; i < res.length; i++) {
-                let element = `<tr><td>${res[i]['gameID']}</td>
-                <td>${res[i]['gameImage']}</td>
+                let element = `<tr><td>${res[i]['gameid']}</td>
+                <td>${res[i]['gameimage']}</td>
                 <td>${res[i]['cname']}</td>
                 <td>${res[i]['ename']}</td>
                 <td>${res[i]['category']}</td>
@@ -46,6 +46,7 @@ function allGameLoad() {
         }
     })
 }
+
 function gameAdd(){
     $('#game-add-form').on('submit',function(e){
         e.preventDefault();
@@ -54,7 +55,7 @@ function gameAdd(){
         console.log(data[0].value);
         $.ajax({
             type:"POST",
-            url:"/HuanYou/gameManageServlet",
+            url:"/games/addGame",
             data: {
                 'gameID1':data[0].value,
                 'gameImage':data[1].value,
@@ -85,7 +86,7 @@ function gameDelete(){
         let data = $('.deleteGameID').val();
         $.ajax({
             type:"POST",
-            url:"/HuanYou/gameManageServlet",
+            url:"/games/addGame",
             data: {
                 'deleteGameID': data
             },
@@ -104,13 +105,13 @@ function gameDelete(){
 function allUserLoad(){
     $.ajax({
         type: "GET",
-        url: "/HuanYou/userManageServlet",
+        url: "/users/getAllUser",
         data: {},
         dataType: "json",
         success: function (res) {
             let data = [];
             for (let i = 0; i < res.length; i++) {
-                let element = `<tr><td>${res[i]['userID']}</td>
+                let element = `<tr><td>${res[i]['userid']}</td>
                 <td>${res[i]['username']}</td>
                 <td>${res[i]['password']}</td>
                 <td>${res[i]['nickname']}</td>
@@ -141,13 +142,14 @@ function allUserLoad(){
         }
     })
 }
+
 function userDelete(){
     $('#user-delete-form').on('submit',function(e){
         e.preventDefault();
         let data = $('.deleteUserID').val();
         $.ajax({
             type:"POST",
-            url:"/HuanYou/userManageServlet",
+            url:"/users/deleteUser",
             data: {
                 'userID': data
             },

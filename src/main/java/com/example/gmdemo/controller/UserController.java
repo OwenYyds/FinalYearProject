@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
 @RestController
@@ -47,7 +48,7 @@ public class UserController {
         } else {
             //登录成功
             User LoginUser = userService.getOne(queryWrapper);
-            session.setAttribute("user",LoginUser);
+            session.setAttribute("user", LoginUser);
             return "登录成功";
         }
     }
@@ -120,7 +121,7 @@ public class UserController {
         }
     }
 
-    //获取用户信息
+    //获取当前登录用户信息
     @GetMapping("getUser")
     @ResponseBody
     public User getUserInfo(HttpServletRequest request) {
@@ -143,16 +144,43 @@ public class UserController {
         String profile = request.getParameter("profile");
         String head = request.getParameter("head");
 
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         if (nickname != null) {
             user.setNickname(nickname);
             user.setGender(gender);
             user.setBirthday(birthday);
             user.setProfile(profile);
+            System.out.println(user);
             userService.updateById(user);
+//            queryWrapper.eq("username", user.getUsername());
+//            userService.update(queryWrapper);
         } else {
             user.setHead(head);
-            userService.updateById(user);
+//            System.out.println(user);
+//            queryWrapper.eq("username", user.getUsername());
+//            userService.update(queryWrapper);
         }
         return "修改成功";
+    }
+
+
+    //后台系统获取所有用户
+    @GetMapping("getAllUser")
+    @ResponseBody
+    public List<User> getAllUser() {
+        return userService.list();
+    }
+
+    //后台删除用户
+    @PostMapping("deleteUser")
+    @ResponseBody
+    public String deleteUserById(HttpServletRequest request) {
+        Integer userID = Integer.valueOf(request.getParameter("userID"));
+        if (userID == null) {
+            return "service error";
+        } else {
+            userService.removeById(userID);
+        }
+        return "user removed!!!";
     }
 }

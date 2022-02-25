@@ -37,12 +37,13 @@ public class UserControllerTest {
         User user = new User();
         String username = "2352335";
         user.setGender("男");
-        user.setNickname("66666666666");
+        user.setNickname("7777777777888888888888888");
         user.setProfile("keep figjhting");
 
         QueryWrapper<User> objectQueryWrapper = new QueryWrapper<>();
         objectQueryWrapper.eq("username", username);
         userService.getOne(objectQueryWrapper);
+        userService.update(user,objectQueryWrapper);
 //        userService.updateById(user);
 
 

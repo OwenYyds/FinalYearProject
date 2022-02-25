@@ -43,4 +43,40 @@ public class GameController {
         }
         return null;
     }
+
+    @PostMapping("addGame")
+    @ResponseBody
+    public String addGame(HttpServletRequest request, HttpServletResponse response){
+        Integer gameid = Integer.valueOf(request.getParameter("gameID1"));
+        String gameimage = request.getParameter("gameImage");
+        String cname = request.getParameter("cname");
+        String ename = request.getParameter("ename");
+        String category = request.getParameter("category");
+        Integer score = Integer.valueOf(request.getParameter("score"));
+        String developer = request.getParameter("developer");
+        String date = request.getParameter("date");
+        String profile = request.getParameter("profile");
+        String deleteGameID = request.getParameter("deleteGameID");
+
+        Game game = new Game();
+        game.setGameid(gameid);
+        game.setGameimage(gameimage);
+        game.setCategory(category);
+        game.setCname(cname);
+        game.setEname(ename);
+        game.setDate(date);
+        game.setScore(score);
+        game.setDeveloper(developer);
+        game.setProfile(profile);
+
+        if (deleteGameID==null){
+            gameService.save(game);
+            return "added one game";
+        }else {
+            gameService.removeById(deleteGameID);
+        }
+
+        return "Done";
+
+    }
 }
