@@ -31,7 +31,7 @@ $(function () {
                     if ($('.usernameInput>input').val().toLowerCase() == "admin") {
                         window.location.href = "admin/index.html";
                     } else {
-                        window.location.href = "page/userIndex.html";
+                        window.location.href = "index.html";
                     }
                 }
             },
@@ -88,7 +88,7 @@ $(function () {
                     $('.CusernameInput').append(data);
                 } else {
                     alert("注册成功");
-                    window.location.href="index.html";
+                    window.location.href="L&R.html";
                 }
 
             },

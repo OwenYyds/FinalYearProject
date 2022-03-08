@@ -145,13 +145,14 @@ public class UserController {
         String head = request.getParameter("head");
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("userid",user.getUserid());
         if (nickname != null) {
             user.setNickname(nickname);
             user.setGender(gender);
             user.setBirthday(birthday);
             user.setProfile(profile);
             System.out.println(user);
-            userService.updateById(user);
+            userService.update(user,queryWrapper);
 //            queryWrapper.eq("username", user.getUsername());
 //            userService.update(queryWrapper);
         } else {

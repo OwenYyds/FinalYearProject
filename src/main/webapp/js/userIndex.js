@@ -62,11 +62,9 @@ $(function () {
 function init(width, res) {
     let banner = document.getElementsByClassName('banner')[0];
     img = banner.getElementsByTagName("img");
-    console.log(img);
     img[0].style.left = 0;
     for (let i = 1; i < img.length; i++) {
         img[i].style.left = width + 'px';
-        console.log("执行");
     }
     $(".banner-title>.Cname").text(res[0]["adtext"].split(";")[0]);
     $(".banner-title>.Ename").text(res[0]["adtext"].split(";")[1]);

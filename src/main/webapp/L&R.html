@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameLmfao</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- 登录页面 -->
+    <div class="box"></div>
+    <div class="content container-fluid">
+        <div class="login">
+            <input type="checkbox" name="form-type" id="form-type">
+            <div class="form-type-text">
+                <span>login</span>
+                <span>register</span>
+            </div>
+            <label for="form-type"></label>
+            <div class="login-form">
+                <form class="form-front" method="post"  id="login">
+                    <h1>LOG IN</h1>
+                    <div class="form-input usernameInput">
+                        <span><i class="fa fa-user"></i></span>
+                        <input type="text" name="username" placeholder="用户名">
+                    </div>
+                    <div class="form-input passwordInput">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" name="password" placeholder="密码">
+                    </div>
+                    <p class="text-light"><input type="checkbox" required class="mx-2">我已阅读并同意<a href="#">《GameLmfao》</a></p>
+                    <div class="form-submit">
+                        <input type="submit" value="登录">
+                    </div>
+                    
+                </form>
+                
+                <form class="form-back" id="register">
+                    <h1>register</h1>
+                    <div class="form-input CusernameInput">
+                        <span> <i class="fa fa-user"></i></span>
+                        <input type="text" name="Cusername" placeholder="用户名为数字组成,6~10位">
+                    </div>
+                    <div class="form-input CpasswordInput">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" name="Cpassword" placeholder="密码长度需为6~12位">
+                    </div>
+                    <div class="form-input Cpassword2Input">
+                        <span><i class="fa fa-lock"></i></span>
+                        <input type="password" name="Cpassword2" placeholder="此次密码需要与上一栏一致">
+                    </div>
+                    <p class="text-light"><input type="checkbox" required class="mx-2">我已阅读并同意<a href="#">《幻游网小组服务条款》</a></p>
+                    <div class="form-submit">
+                        <input type="submit" value="立即注册">
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
