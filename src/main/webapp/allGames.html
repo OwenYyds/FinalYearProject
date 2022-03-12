@@ -11,10 +11,15 @@
     <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
 <div class="container-fluid  p-0">
     <header class="top-area animal-top">
         <div class="top-nav container ">
-            <nav  class="navbar navbar-expand-lg  navStyle navbar-dark animal-left">
+            <nav class="navbar navbar-expand-lg  navStyle navbar-dark animal-left">
                 <!-- 商标 -->
                 <div class="navbar-brand">
                     <a href="#" class="logo-text">GameLmfao</a>
@@ -75,50 +80,48 @@
 
 
 <!--    content fade model-->
-<div class="modal fade" id="gameInfo" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-scrollable">
+<div class="modal fade " id="gameInfo" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
-            <div id="gameInfo-add">
-                <div class="modal-header game-top text-light ">
-                    <h5 id="gameName">糖豆人：终极淘汰赛</h5>
-                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body container game">
-                    <div class="gameInfo-content row ">
-                        <div class="col-lg-6 col-12 gameInfo-picture">
-                            <img src="images/GameImage/game8.jpg" id="game-pc">
+            <div class="modal-header game-top text-light">
+                <h5 id="gameName">糖豆人：终极淘汰赛</h5>
+                <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body game">
+                <div class="gameInfo-content row">
+                    <div class="col gameInfo-picture">
+                        <img src="images/GameImage/game8.jpg" id="game-pc">
+                    </div>
+                    <div class="col gameInfo-text">
+                        <div class="gameInfo-header">
+                            <h2 id="game-info-cname">鬼泣5</h2>
+                            <h5 id="game-info-ename">Devil May Cry V</h5>
                         </div>
-                        <div class="col-lg-6 gameInfo-text">
-                            <div class="gameInfo-header">
-                                <h2 id="game-info-cname">鬼泣5</h2>
-                                <h5 id="game-info-ename">Devil May Cry V</h5>
+                        <div class="gameInfo-content">
+                            <div>开发商：<span id="game-info-developer">卡普空</span></div>
+                            <div>发行日期：<span id="game-info-date">2019-09-06</span></div>
+                            <div class="game-profile-area">游戏介绍：
+                                <div class="game-profile">
+                                    《鬼泣5》不但是系列的集大成者，而且在战斗、叙事、关卡节奏、重复游玩等方面均出现了长足进步。它是迄今为止最好的动作游戏之一，在《猎天使魔女3》问世之前，很难想象会有其他动作游戏能够与之相提并论
+                                    [11] （《游民星空》评）
+                                    《鬼泣5》在玩法内核上依然延续了系列一直以来的设计，当初或许有观点认为它缺少变化，但现在看来，一，它做了变化；二，它没做变化的，表现得更好。当CAPCOM把这传统的ACT玩法用最新技术去呈现，玩家就会发现，硬核ACT的玩法经得起时间的考验，它在这个时代依然熠熠生辉
+                                    [10] （《VGTime》评）
+                                </div>
                             </div>
-                            <div class="gameInfo-content">
-                                <div>开发商：<span id="game-info-developer">卡普空</span></div>
-                                <div>发行日期：<span id="game-info-date">2019-09-06</span></div>
-                                <div class="game-profile-area">游戏介绍：
-                                    <div class="game-profile">
-                                        《鬼泣5》不但是系列的集大成者，而且在战斗、叙事、关卡节奏、重复游玩等方面均出现了长足进步。它是迄今为止最好的动作游戏之一，在《猎天使魔女3》问世之前，很难想象会有其他动作游戏能够与之相提并论
-                                        [11] （《游民星空》评）
-                                        《鬼泣5》在玩法内核上依然延续了系列一直以来的设计，当初或许有观点认为它缺少变化，但现在看来，一，它做了变化；二，它没做变化的，表现得更好。当CAPCOM把这传统的ACT玩法用最新技术去呈现，玩家就会发现，硬核ACT的玩法经得起时间的考验，它在这个时代依然熠熠生辉
-                                        [10] （《VGTime》评）
-                                    </div>
-                                </div>
-                                <div class="game-score-area">
-                                    <h5>媒体评分：</h5>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                    <div class="star"></div>
-                                </div>
+                            <div class="game-score-area">
+                                <h5>媒体评分：</h5>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
             </div>
         </div>
     </div>

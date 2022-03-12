@@ -41,6 +41,7 @@ $(function () {
         success: function (res) {
             console.log(res[0].gameimage)
             console.log(res[0].cname)
+
             $(".hot-game-bg").each(function (index) {
                 $(this).css({
                     "background": "url(../images/GameImage/" + res[index].gameimage,
@@ -52,6 +53,17 @@ $(function () {
             $(".hot-game-text").each(function (index) {
                 $(this).text(res[index].cname);
             })
+
+            // let hotGameList = '<div class="hotGame-card col-lg-3 col-md-6 col-12"><div class="card-cover animal-top">'+hotgame+'</div></div>';
+            // let hotgame = '<div class="hot-game-bg"></div><div class="hot-game-text"></div>';
+            // for (let i = 0;i<res.length;i++){
+            //     $(".hot-game-bg").css({
+            //         "background": "url(../images/GameImage/" + res.gameimage,
+            //         "background-size": "cover",
+            //         "background-position": "center center"
+            //     })
+            // }
+
         },
         error: function () {
             alert("加载数据失败");

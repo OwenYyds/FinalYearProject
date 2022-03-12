@@ -3,6 +3,8 @@ $(function () {
     category();
     gameSearch();
     gameInfoShow();
+    //Allgames page bgimg "background": "url(../images/GameImage/game1.jpg"
+    // $('.game-area').css({"background-color": "gray"})
 })
 
 function category() {
