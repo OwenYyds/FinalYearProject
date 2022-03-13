@@ -200,3 +200,15 @@ ul,ul li{
     background-size: cover;
     background-position: center center;
 }
+@media screen and (max-width:2160px){
+    html{
+        font-size: 12px;
+    }
+    .box{
+        height: 800px;
+    }
+    .hotGame-card{
+        padding: 2rem;
+        height: 35rem;
+    }
+}

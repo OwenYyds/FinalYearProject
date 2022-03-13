@@ -1,7 +1,6 @@
 package com.example.gmdemo.pojo;
 
 
-
 import lombok.Data;
 
 
