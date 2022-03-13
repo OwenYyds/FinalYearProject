@@ -5,7 +5,7 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql:///fantsy?serverTimezone=UTC
+      url: jdbc:mysql:///gmlmfao?serverTimezone=UTC
       username: root
       password: 123
 
