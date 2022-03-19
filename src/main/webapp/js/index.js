@@ -4,7 +4,7 @@ $(function () {
 
     $.ajax({
         type: "GET",
-        url: "/index/ad",
+        url: "/index/BannerContent",
         data: {},
         dataType: "json",
         success: function (res) {
@@ -25,7 +25,7 @@ $(function () {
                     width = $(window).width();
                     init(width, res);
                     bannerControl(width, res);
-                }, 400)
+                }, 4000)
             })
         },
         error: function () {
@@ -113,7 +113,6 @@ function bannerControl(width, res) {
     })
 }
 
-/* 支持透明度的缓动动画 */
 function slowAnimate(obj, json, fn) {
     let speed = 0;
     let begin = 0;

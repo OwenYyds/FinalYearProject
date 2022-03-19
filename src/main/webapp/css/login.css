@@ -6,7 +6,7 @@ body,html{
 .box{
     width: 100vw;
     height: 100vh;
-    background: url(../images/IndexImage/01.jpg) no-repeat;
+    background: url(../images/L&DImage/main.jpg) no-repeat;
     background-size: cover;
     position: absolute;
     transform: scale(1.2);
@@ -57,7 +57,7 @@ body,html{
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
-    background: #55efc4;
+    background: #9a4954;
     border-radius: 0.75rem;
     border: 0.2rem solid #00b894;
     top: -25%;
@@ -65,7 +65,7 @@ body,html{
     transition: 0.5s;
 }
 #form-type:checked ~label::before{
-    background-color: #FFC312;
+    background-color: #176c1f;
     border: 0.2rem solid #F79F1F;
     left: 75%;
 }
@@ -83,7 +83,7 @@ body,html{
     flex-direction: column;
     align-items: center;
     padding: 4rem 4rem;
-    background-color: #1abc9cbd; /* 正面背景色 */
+    background-color: rgba(147, 56, 57, 0.4); /* 正面背景色 */
     border-radius: 1rem;
     position: absolute;
     top: 0;
@@ -97,7 +97,7 @@ body,html{
     flex-direction: column;
     align-items: center;
     padding: 2.5rem 4rem;
-    background-color: #FFC312bd; /* 背面背景色 */
+    background-color: rgba(71, 73, 145, 0.74); /* 背面背景色 */
     border-radius: 1rem;
     backface-visibility: hidden;
     transform: rotateY(-180deg);
@@ -154,7 +154,7 @@ body,html{
     color: white;
 }
 .form-back .form-submit input:hover{
-    background-color: #F79F1F;
+    background-color: #9b4de5;
     color: white;
 }
 .prompt{

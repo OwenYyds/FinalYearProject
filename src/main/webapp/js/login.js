@@ -117,13 +117,13 @@ $(function () {
     $("#form-type").on('change', function () {
         if (flag) {
             $('.box').css({
-                "background": "url(images/IndexImage/02.jpg) no-repeat",
+                "background": "url(images/L&DImage/ps.jpg) no-repeat",
                 "background-size": "cover"
             })
             flag = 0;
         } else {
             $('.box').css({
-                "background": "url(images/IndexImage/01.jpg) no-repeat",
+                "background": "url(images/L&DImage/xbox.jpg) no-repeat",
                 "background-size": "cover"
             })
             flag = 1;
