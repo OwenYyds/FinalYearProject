@@ -7,8 +7,8 @@ body{
 }
 .top-area{
     width: 100%;
-    background: url(../images/BannerImage/header3.jpg) no-repeat;
-    background-position: center center;
+    background: url(../images/BannerImage/conmmon.jpg) no-repeat;
+    background-position-y: inherit;
     background-size: cover;
     position: relative;
     box-shadow: 4px 0px 8px 6px rgba(0, 0, 0, 0.459);
