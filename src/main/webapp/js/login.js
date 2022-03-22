@@ -117,7 +117,7 @@ $(function () {
     $("#form-type").on('change', function () {
         if (flag) {
             $('.box').css({
-                "background": "url(images/L&DImage/ps.jpg) no-repeat",
+                "background": "url(images/L&DImage/main.jpg) no-repeat",
                 "background-size": "cover"
             })
             flag = 0;

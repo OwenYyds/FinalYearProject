@@ -69,7 +69,13 @@ $(function () {
             alert("加载数据失败");
         }
     })
+
+
+    $(".hotGame-card").click(function (){
+        location.href = "game-info.html";
+    })
 })
+
 
 function init(width, res) {
     let banner = document.getElementsByClassName('banner')[0];
@@ -169,3 +175,5 @@ function textShow() {
         }, 500
     )
 }
+
+

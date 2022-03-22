@@ -6,7 +6,7 @@ body,html{
 .box{
     width: 100vw;
     height: 100vh;
-    background: url(../images/L&DImage/main.jpg) no-repeat;
+    background: url(../images/L&DImage/xbox.jpg) no-repeat;
     background-size: cover;
     position: absolute;
     transform: scale(1.2);
@@ -34,9 +34,10 @@ body,html{
 .form-type-text{
     display: inline-block;
     font-weight: 100;
-    color: white;
+    color: #0bbd14;
     letter-spacing: 0.1rem;
     margin: 0.5rem 2rem;
+    font-weight: bolder;
 }
 .form-type-text span{
     margin: 0.5rem 0.5rem;

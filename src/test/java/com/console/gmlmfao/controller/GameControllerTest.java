@@ -10,29 +10,35 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class GameControllerTest {
 
-    @Autowired
-    private IGameService gameService;
+//    @Autowired
+//    private IGameService gameService;
 
     @Test
-    void gameTest() {
+    void gameTest(int a) {
 
-        String category = "休闲";
-        String searchText = "";
+//        String category = "休闲";
+//        String searchText = "";
+//
+//        QueryWrapper<Game> queryWrapper = new QueryWrapper<>();
+//        QueryWrapper<Game> category1 = queryWrapper.eq("category", category);
+//        QueryWrapper<Game> queryWrapper1 = new QueryWrapper<>();
+//        QueryWrapper<Game> searchText1 = queryWrapper1.eq("searchText", searchText);
+//
+//
+//        if (category != null) {
+//            gameService.list(category1);
+//        } else if (searchText != "") {
+//             gameService.list(searchText1);
+//        }
+//
+//        System.out.println("```````````````````````````````");
+//
+//        gameService.list();
 
-        QueryWrapper<Game> queryWrapper = new QueryWrapper<>();
-        QueryWrapper<Game> category1 = queryWrapper.eq("category", category);
-        QueryWrapper<Game> queryWrapper1 = new QueryWrapper<>();
-        QueryWrapper<Game> searchText1 = queryWrapper1.eq("searchText", searchText);
-
-
-        if (category != null) {
-            gameService.list(category1);
-        } else if (searchText != "") {
-             gameService.list(searchText1);
-        }
-
-        System.out.println("```````````````````````````````");
-
-        gameService.list();
+        System.out.println(a);
+    }
+    @Test
+    void ttt(){
+        gameTest(0);
     }
 }

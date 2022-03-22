@@ -195,11 +195,7 @@ ul,ul li{
     font-weight: 400;
     color: #1c7430;
 }
-.set-bg {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
+
 @media screen and (max-width:2160px){
     html{
         font-size: 12px;

@@ -10,3 +10,8 @@
         height: 35rem;
     }
 }
+.set-bg{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+}
