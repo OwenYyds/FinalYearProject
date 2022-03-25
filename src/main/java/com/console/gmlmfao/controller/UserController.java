@@ -7,9 +7,12 @@ import com.console.gmlmfao.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -22,7 +25,7 @@ public class UserController {
     //登录
     @PostMapping("login")
     @ResponseBody
-    public String findUserByUsernameAndPassword(HttpServletRequest req) {
+    public String findUserByUsernameAndPassword(HttpServletRequest req, HttpServletResponse res) {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
@@ -46,10 +49,22 @@ public class UserController {
         } else {
             //登录成功
             User LoginUser = userService.getOne(queryWrapper);
+            String token = LoginUser.getToken();
+            res.addCookie(new Cookie("token", token));
             session.setAttribute("user", LoginUser);
             return "登录成功";
         }
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().removeAttribute("user");
+        Cookie cookie = new Cookie("token", null);
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "L&D";
+    }
+
 
     //注册
     @PostMapping("register")
@@ -59,6 +74,7 @@ public class UserController {
         String Cpassword = request.getParameter("Cpassword");
         String Cpassword2 = request.getParameter("Cpassword2");
         boolean flag = false;
+        String token = UUID.randomUUID().toString();
         String result1 = Pusername(Cusername);
         String result2 = Ppassword(Cpassword);
         System.out.println(result1);
@@ -75,10 +91,10 @@ public class UserController {
         } else {
             user.setUsername(Cusername);
             user.setPassword(Cpassword);
+            user.setToken(token);
             flag = userService.save(user);
             if (flag) {
                 return "注册成功";
-
             } else {
                 return "注册失败";
             }
@@ -143,14 +159,14 @@ public class UserController {
         String head = request.getParameter("head");
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("userid",user.getUserid());
+        queryWrapper.eq("userid", user.getUserid());
         if (nickname != null) {
             user.setNickname(nickname);
             user.setGender(gender);
             user.setBirthday(birthday);
             user.setProfile(profile);
             System.out.println(user);
-            userService.update(user,queryWrapper);
+            userService.update(user, queryWrapper);
 //            queryWrapper.eq("username", user.getUsername());
 //            userService.update(queryWrapper);
         } else {

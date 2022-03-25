@@ -16,5 +16,6 @@ public class User {
     private String profile;
     private String loved;
     private String birthday;
+    private String token;
     private List<Game> collect;
 }
