@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/jsstyle.css">
+    <link rel="stylesheet" href="css/comment.css">
 </head>
 <body>
 
@@ -54,7 +56,7 @@
                             <option value="竞速">竞速</option>
                             <option value="角色扮演">角色扮演</option>
                             <option value="策略">策略</option>
-                            <option value="网游">网游</option>
+                            <option value="网游">射击</option>
                         </select>
                     </div>
                 </div>
@@ -84,37 +86,55 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header game-top text-light">
-                <h5 id="gameName">糖豆人：终极淘汰赛</h5>
+                <h5 id="gameName">title</h5>
                 <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body game">
                 <div class="gameInfo-content row">
                     <div class="col gameInfo-picture">
-                        <img src="images/GameImage/game8.jpg" id="game-pc">
+                        <img src="" id="game-pc">
                     </div>
                     <div class="col gameInfo-text">
                         <div class="gameInfo-header">
-                            <h2 id="game-info-cname">鬼泣5</h2>
-                            <h5 id="game-info-ename">Devil May Cry V</h5>
+                            <h2 id="game-info-cname">cname</h2>
+                            <h5 id="game-info-ename">ename</h5>
                         </div>
                         <div class="gameInfo-content">
-                            <div>开发商：<span id="game-info-developer">卡普空</span></div>
-                            <div>发行日期：<span id="game-info-date">2019-09-06</span></div>
+                            <div>开发商：<span id="game-info-developer">developer</span></div>
+                            <div>发行日期：<span id="game-info-date">date</span></div>
                             <div class="game-profile-area">游戏介绍：
                                 <div class="game-profile">
-                                    《鬼泣5》不但是系列的集大成者，而且在战斗、叙事、关卡节奏、重复游玩等方面均出现了长足进步。它是迄今为止最好的动作游戏之一，在《猎天使魔女3》问世之前，很难想象会有其他动作游戏能够与之相提并论
-                                    [11] （《游民星空》评）
-                                    《鬼泣5》在玩法内核上依然延续了系列一直以来的设计，当初或许有观点认为它缺少变化，但现在看来，一，它做了变化；二，它没做变化的，表现得更好。当CAPCOM把这传统的ACT玩法用最新技术去呈现，玩家就会发现，硬核ACT的玩法经得起时间的考验，它在这个时代依然熠熠生辉
-                                    [10] （《VGTime》评）
+                                    describe
                                 </div>
                             </div>
                             <div class="game-score-area">
-                                <h5>媒体评分：</h5>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
+                                <div id="post" class="commentAll">
+                                    <div class="comment-show">
+                                        <div class="comment-show-con clearfix">
+                                            <div class="comment-show-con-img pull-left"><img
+                                                    src="images/header-img-comment_03.png" alt=""></div>
+                                            <div class="comment-show-con-list pull-left clearfix">
+                                                <div class="pl-text clearfix">
+                                                    <a href="#" class="comment-size-name">静态测试 : </a>
+                                                    <span class="my-pl-con">&nbsp;newbee!</span>
+                                                </div>
+                                                <div class="date-dz">
+                                                    <span class="date-dz-left pull-left comment-time">2021-12-30 23:11:39</span>
+                                                    <div class="date-dz-right pull-right comment-pl-block">
+                                                        <a href="javascript:;" class="date-dz-z pull-left">
+                                                            <i class="date-dz-z-click-red"></i>赞 (<i class="z-num">6</i>)</a>
+                                                    </div>
+                                                </div>
+                                                <div class="hf-list-con"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="reviewArea clearfix">
+                                        <textarea class="content comment-input" placeholder="请输入留言内容&hellip;"
+                                                  onkeyup="keyUP(this)"></textarea>
+                                        <a href="javascript:;" class="plBtn">发表评论</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,12 +148,13 @@
 </div>
 
 
-
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/scrollreveal.min.js"></script>
 <script src="js/animate.js"></script>
 <script src="js/page.js"></script>
 <script src="js/game.js"></script>
+<script type="text/javascript" src="js/jquery.flexText.js"></script>
+<script type="text/javascript" src="js/post_file.js"></script>
 </body>
 </html>
