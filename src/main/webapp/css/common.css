@@ -200,3 +200,9 @@ ul,ul li{
         height: 35rem;
     }
 }
+
+#loginUser{
+
+    border-radius: 50%;
+    padding: 0;
+}

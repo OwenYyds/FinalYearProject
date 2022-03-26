@@ -15,15 +15,17 @@ $(window).on('load', function () {
 $(function () {
     $.get("/users/checkUser", {}, function (data) {
         if (data != null) {
-            $("#loginUser").html(data.username);
+            console.log(data.head + "````" + data.username)
+            $("#loginUser").css({"background": "url(../images/HeadImage/" + data.head,
+                "background-size": "cover",
+                "background-position": "center center"
+            })
         } else {
-            $("#loginUser").html("游客");
+            $("#loginUser").html("登录");
         }
     })
 })
 $("#logout").click(function (){
-    $.get("/users/logout",{},function (){
         location.href = "L&D.html";
-    })
 })
 
