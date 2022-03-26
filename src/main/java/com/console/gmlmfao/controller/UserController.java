@@ -54,7 +54,6 @@ public class UserController {
         queryWrapper.eq("username", username);
         queryWrapper.eq("password", password);
 
-
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);

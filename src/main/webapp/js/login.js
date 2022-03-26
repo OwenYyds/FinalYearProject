@@ -1,3 +1,4 @@
+
 $(function () {
     //登录功能
     $("#login").on("submit", function (e) {
@@ -98,6 +99,7 @@ $(function () {
         })
 
     })
+
     //背景随鼠标移动
     window.addEventListener('mousemove', function (e) {
 
