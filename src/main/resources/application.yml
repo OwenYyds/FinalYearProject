@@ -8,6 +8,16 @@ spring:
       url: jdbc:mysql:///gmlmfao?serverTimezone=UTC
       username: root
       password: 123
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 1000
+    jedis:
+      pool:
+        min-idle: 5
+        max-idle: 10
+        max-wait: -1
+
 
 mybatis-plus:
   global-config:

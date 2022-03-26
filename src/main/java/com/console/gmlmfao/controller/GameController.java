@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.console.gmlmfao.pojo.Game;
 import com.console.gmlmfao.service.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.ListOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,9 @@ import java.util.List;
 @RestController
 @RequestMapping("games")
 public class GameController {
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Autowired
     private IGameService gameService;
