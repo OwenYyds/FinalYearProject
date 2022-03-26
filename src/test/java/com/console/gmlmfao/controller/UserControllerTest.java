@@ -27,17 +27,21 @@ public class UserControllerTest {
 
     @Test
     void getAllUsers() {
-        User user = new User();
-        String username = "2352335";
-        user.setGender("男");
-        user.setNickname("7777777777888888888888888");
-        user.setProfile("keep figjhting");
-
-        QueryWrapper<User> objectQueryWrapper = new QueryWrapper<>();
-        objectQueryWrapper.eq("username", username);
-        userService.getOne(objectQueryWrapper);
-        userService.update(user,objectQueryWrapper);
+//        User user = new User();
+//        String username = "2352335";
+//        user.setGender("男");
+//        user.setNickname("7777777777888888888888888");
+//        user.setProfile("keep figjhting");
+//
+//        QueryWrapper<User> objectQueryWrapper = new QueryWrapper<>();
+//        objectQueryWrapper.eq("username", username);
+//        userService.getOne(objectQueryWrapper);
+//        userService.update(user,objectQueryWrapper);
 //        userService.updateById(user);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        String token = "b04ebdf7-b4bc-48ec-98cf-9d5f5a9f0a0f";
+        QueryWrapper<User> token1 = queryWrapper.eq("token", token);
+        System.out.println(userService.getOne(token1));
 
 
     }

@@ -22,6 +22,27 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    //检查用户是否登录
+    @GetMapping("checkUser")
+    @ResponseBody
+    public User chackUserInSession(HttpServletRequest req, HttpServletResponse res) {
+        Cookie[] cookies = req.getCookies();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    String token = cookie.getValue();
+                    QueryWrapper<User> userFound = queryWrapper.eq("token", token);
+                    User one = userService.getOne(userFound);
+                    return one;
+                }
+            }
+        } else {
+            return null;
+        }
+        return null;
+    }
+
     //登录
     @PostMapping("login")
     @ResponseBody
@@ -57,12 +78,11 @@ public class UserController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().removeAttribute("user");
         Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
-        return "L&D";
     }
 
 
@@ -106,13 +126,11 @@ public class UserController {
         boolean bool = false;
         if (username.length() >= 6 && username.length() <= 10) {
             for (int i = 0; i < username.length(); i++) {
-
                 char ch = username.charAt(i);
                 //获取每一个字符
                 if (ch >= '0' && ch <= '9') {
                     //判断字符是否为0到9的数字
                     bool = true;
-
                 } else {
                     bool = false;
                     return "用户名需要0~9的数字组成,长度为6~10位";
