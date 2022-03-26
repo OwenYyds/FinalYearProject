@@ -1,7 +1,6 @@
 let timer2, img;
 
 $(function () {
-
     $.ajax({
         type: "GET",
         url: "/index/BannerContent",
