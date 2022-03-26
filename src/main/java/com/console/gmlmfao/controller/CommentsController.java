@@ -14,9 +14,8 @@ public class CommentsController {
     private ICommentsLikedService commentsLikedService;
 
     @GetMapping("/getComments")
-    public String getComments(){
-
-        return null;
+    public void getComments(){
+        commentsLikedService.list();
     }
 
 }
