@@ -4,10 +4,7 @@ $(function () {
     //Allgames page bgimg "background": "url(../images/GameImage/game1.jpg"
     // $('.game-area').css({"background-color": "gray"})
 })
-$('.set-bg').each(function() {
-    var bg = $(this).data('setbg');
-    $(this).css('background-image', 'url(' + bg + ')');
-});
+
 function xboxGameInfo() {
     $('.gameList').on('click','.gameList-item', function () {
         let text = $(this).find('.game-name').text();
@@ -85,5 +82,9 @@ $(function () {
         delayBeforeStart: 0,
         direction: 'left',
         duplicated: true
+    });
+    $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
     });
 })
