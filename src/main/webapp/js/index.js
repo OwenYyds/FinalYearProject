@@ -38,8 +38,8 @@ $(function () {
         data: {},
         dataType: "json",
         success: function (res) {
-            console.log(res[0].gameimage)
-            console.log(res[0].cname)
+            // console.log(res[0].gameimage)
+            // console.log(res[0].cname)
 
             $(".hot-game-bg").each(function (index) {
                 $(this).css({

@@ -8,4 +8,5 @@ public class Comments {
     private Integer uid;
     private Integer gid;
     private String comments;
+    private String time;
 }

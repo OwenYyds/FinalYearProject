@@ -25,7 +25,7 @@ public class UserController {
     //检查用户是否登录
     @GetMapping("checkUser")
     @ResponseBody
-    public User chackUserInSession(HttpServletRequest req, HttpServletResponse res) {
+    public User checkUserByCookieInSession(HttpServletRequest req, HttpServletResponse res) {
         Cookie[] cookies = req.getCookies();
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         if (cookies != null) {
