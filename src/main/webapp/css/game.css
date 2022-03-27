@@ -36,18 +36,17 @@
 #category{
     cursor: pointer;
     border: none;
+    font-size: medium;
 }
 .search-area{
     position: relative;
 }
 .search-input{
-    padding: 0.5rem 1rem;
-    padding-right: 2rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
     outline: none;
-    font-size: 0.5rem;
+    font-size: medium;
     border-radius: 0.5rem;
     border: 1px solid rgb(201, 201, 201);
-    width: 15rem;
 }
 .search-btn{
     position: absolute;

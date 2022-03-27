@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/jsstyle.css">
 </head>
 <body>
 
@@ -26,7 +25,6 @@
                 <div class="navbar-brand">
                     <a href="#" class="logo-text">GameLmfao</a>
                 </div>
-
                 <!-- 汉堡按钮 -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#toggle">
                     <span class="navbar-toggler-icon "></span>
@@ -44,9 +42,8 @@
         <div class="game-content">
             <div class="game-head row">
                 <div class="game-category col-lg-4">
-                    <span>按游戏类别筛选：</span>
-                    <div class="d-inline-block">
-                        <select name="game-category-select" id="category" class="form-select my-2 text-primary">
+                    <div class="d-inline-block ms-5">
+                        <select name="game-category-select" id="category" class="form-select my-2 text-secondary text-start">
                             <option value="全部游戏">全部游戏</option>
                             <option value="休闲">休闲</option>
                             <option value="体育">体育</option>
@@ -60,7 +57,6 @@
                     </div>
                 </div>
                 <div class="game-search col-lg-4">
-                    <span>按游戏名称搜索：</span>
                     <div class="search-area d-inline-block">
                         <input type="text" name="searchText" placeholder="输入游戏名称：" class="search-input form-control">
                         <i class="fa fa-search search-btn"></i>
@@ -75,9 +71,6 @@
         </div>
     </div>
 </div>
-
-<footer class="footer container-fluid">
-</footer>
 
 
 <div class="modal fade " id="gameInfo" data-bs-backdrop="static">
@@ -129,6 +122,8 @@
         </div>
     </div>
 </div>
+
+<footer class="footer container-fluid"></footer>
 
 
 <script src="js/bootstrap.min.js"></script>

@@ -70,10 +70,12 @@ $(function () {
     })
 
 
-    $(".hotGame-card").click(function (){
-        location.href = "game-info.html";
-    })
 })
+
+$(".hotGame-card").on("click",".hotGame-card",function (){
+    console.log()
+})
+
 
 $(function () {
     $('.news-ticker').marquee({

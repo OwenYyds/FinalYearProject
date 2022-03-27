@@ -4,7 +4,6 @@ import com.console.gmlmfao.pojo.Comments;
 import com.console.gmlmfao.service.ICommentsService;
 import com.console.gmlmfao.service.IUserService;
 import com.github.yulichang.query.MPJQueryWrapper;
-import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
