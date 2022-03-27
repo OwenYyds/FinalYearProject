@@ -3,18 +3,6 @@
 
 $(function () {
     $('.content').flexText();
-    $.ajax({
-        type:"GET" ,
-        url:"/comments/getComments",
-        data:{},
-        dataType:"json",
-        success:function (data){
-            console.log(data);
-        },
-        error:function (){
-            alert("failed");
-        }
-    })
 });
 
 //点击隐藏显示
