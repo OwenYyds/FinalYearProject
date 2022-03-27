@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.yaml.snakeyaml.events.Event;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,12 +26,13 @@ public class CommentsController {
         commentsService.list();
     }
 
-    @GetMapping("/thisGameComment")
-    public List<Comments> getGameComments() {
+    @GetMapping("/getCommentOfThisGame")
+    public List<Comments> getGameComments(HttpServletRequest request) {
+        String gameid = request.getParameter("gameid");
         List<Comments> comments = commentsService.selectJoinList(Comments.class,
                 new MPJQueryWrapper<>()
-                        .select("comments")
-                        .innerJoin("game g on g.gameid = t.gid")
+                        .select("cid","gid","uid","comments")
+                        .innerJoin("game g on g.gameid = t.gid where gameid = " + gameid )
         );
         return comments;
     }
@@ -52,6 +54,4 @@ public class CommentsController {
             return false;
         }
     }
-
-
 }

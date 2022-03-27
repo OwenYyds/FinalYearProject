@@ -16,7 +16,7 @@ function category() {
             $.ajax({
                 type: "POST",
                 url: "/games/search",
-                data: { "category": value },
+                data: {"category": value},
                 dataType: "json",
                 success: function (res) {
                     let data = [];
@@ -48,7 +48,6 @@ function allGameLoad() {
         data: {},
         dataType: "json",
         success: function (res) {
-            console.log("数据为：" + res);
             let data = [];
             for (let i = 0; i < res.length; i++) {
                 let element = `<li class="gameList-item col-lg-3 col-md-4 col-6">
@@ -74,7 +73,7 @@ function gameSearch() {
         $.ajax({
             type: "POST",
             url: "/games/search",
-            data: { "search": data },
+            data: {"search": data},
             dataType: "json",
             success: function (res) {
                 let data = [];
@@ -97,17 +96,19 @@ function gameSearch() {
 }
 
 function gameInfoShow() {
-    $('.gameList').on('click','.gameList-item', function () {
+    $('.gameList').on('click', '.gameList-item', function () {
         let text = $(this).find('.game-name').text();
+        console.log(text)
         $.ajax({
             type: "GET",
             url: "/games/getAll",
             data: {},
             dataType: "json",
             success: function (res) {
-                console.log(text);
+                let a = [];
                 for (let i = 0; i < res.length; i++) {
                     if (res[i]['cname'] == text) {
+                        console.log(res[i]['cname'])
                         $('#gameName').text(res[i]['cname']);
                         $('#game-pc').attr('src', "../images/GameImage/" + res[i]['gameimage']);
                         $('#game-info-cname').text(res[i]['cname']);
@@ -115,13 +116,24 @@ function gameInfoShow() {
                         $('#game-info-developer').text(res[i]['developer']);
                         $('#game-info-date').text(res[i]['date']);
                         $('.game-profile').text(res[i]['profile']);
+                        let gameid = res[i].gameid;
+                        $.get("/comments/getCommentOfThisGame", {"gameid": gameid}, function (data) {
+                            for (let j = 0; j < data.length; j++) {
+                                let commentList = '<div class="card"><div class="card-body"><h6 id="postUser" class="card-subtitle mb-2 text-muted">大聪明</h6><p id="postComment" class="card-text">'+data[j].comments+'</p>  </div>  </div>';
+                                console.log(data[j]['comments']);
+                                // $("#postComment").text(data[j]['comments']);
+                            $("#commentList").html(commentList);
+                            }
+                        })
+
+
                         let score = parseInt(res[i]['score']);
-                        let point = Math.ceil(score/20);
-                        $('.star').each(function(index){
+                        let point = Math.ceil(score / 20);
+                        $('.star').each(function (index) {
                             $(this).removeClass('star-checked');
                         })
-                        $('.star').each(function(index){
-                            if(index<point){
+                        $('.star').each(function (index) {
+                            if (index < point) {
                                 $(this).addClass('star-checked');
                             }
                         })
@@ -129,12 +141,12 @@ function gameInfoShow() {
                     }
                 }
 
+
             }
         })
 
 
     })
-
 
 
 }

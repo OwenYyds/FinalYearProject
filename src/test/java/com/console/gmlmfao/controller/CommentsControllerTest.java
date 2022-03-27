@@ -24,7 +24,7 @@ public class CommentsControllerTest {
         commentsService.selectJoinList(Comments.class,
                 new MPJQueryWrapper<>()
                         .select("comments")
-                        .innerJoin("game g on g.gameid = t.gid")
+                        .innerJoin("game g on g.gameid = t.gid where g.gameid = 1")
         );
     }
 

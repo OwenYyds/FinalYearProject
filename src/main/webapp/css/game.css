@@ -114,6 +114,8 @@
     width: 100%;
     height: 100%;
     box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
+    margin-left: 30px;
+    margin-top: 66px;
 }
 .game-top {
     background: #62e116;
@@ -151,16 +153,7 @@
     font-size: 0.8rem;
     line-height: 1.4rem;
 }
-.game-score-area{
-    margin-top: 2rem;
-    color: #1abc9c;
-    font-size: 1.2rem;
-    padding: 4rem;
-    box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .star{
     cursor: pointer;
     width: 40px;

@@ -4,9 +4,8 @@ import lombok.Data;
 
 @Data
 public class Comments {
-    private Integer aid;
+    private Integer cid;
     private Integer uid;
     private Integer gid;
-    private Integer liked;
     private String comments;
 }

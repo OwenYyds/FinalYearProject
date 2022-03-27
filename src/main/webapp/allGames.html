@@ -107,11 +107,22 @@
                                     describe
                                 </div>
                             </div>
-                            <div class="game-score-area">
-
-                            </div>
                         </div>
                     </div>
+                </div>
+                <div id="commentList" class="container row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 id="postUser" class="card-subtitle mb-2 text-muted">用户</h6>
+                            <p id="postComment" class="card-text">内容</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row container mt-3">
+                    <div class="input-group">
+                        <textarea id="content" class="form-control" aria-label="With textarea" contenteditable="true"></textarea>
+                    </div>
+                    <button id="postBtn" type="button" class="btn btn-outline-success w-25 ms-5">发表评论</button>
                 </div>
             </div>
             <div class="modal-footer">
@@ -128,7 +139,7 @@
 <script src="js/animate.js"></script>
 <script src="js/page.js"></script>
 <script src="js/game.js"></script>
-<script type="text/javascript" src="js/jquery.flexText.js"></script>
-<script type="text/javascript" src="js/post_file.js"></script>
+<script src="js/post.js"></script>
+
 </body>
 </html>
