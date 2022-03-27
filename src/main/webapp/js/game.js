@@ -105,8 +105,8 @@ function gameInfoShow() {
             data: {},
             dataType: "json",
             success: function (res) {
-                let a = [];
                 for (let i = 0; i < res.length; i++) {
+                    let parentCommentArea='<div class="card"></div>>';
                     if (res[i]['cname'] == text) {
                         console.log(res[i]['cname'])
                         $('#gameName').text(res[i]['cname']);
@@ -119,11 +119,22 @@ function gameInfoShow() {
                         let gameid = res[i].gameid;
                         $.get("/comments/getCommentOfThisGame", {"gameid": gameid}, function (data) {
                             for (let j = 0; j < data.length; j++) {
-                                let commentList = '<div class="card"><div class="card-body"><h6 id="postUser" class="card-subtitle mb-2 text-muted">大聪明</h6><p id="postComment" class="card-text">'+data[j].comments+'</p>  </div>  </div>';
-                                console.log(data[j]['comments']);
-                                // $("#postComment").text(data[j]['comments']);
-                            $("#commentList").html(commentList);
+                                if (data[j].comments != null) {
+                                    let commentList = '<div class="card-body"><h6 id="postUser" class="card-subtitle mb-2 text-muted">大聪明</h6><p id="postComment" class="card-text">' + data[j].comments + '</p>  </div>';
+                                    parentCommentArea+=commentList;
+                                    $("#commentList").html(parentCommentArea);
+                                    // $("#commentList").html(commentList);
+                                } else {
+                                    alert("dsadsadsad");
+                                    return false;
+                                }
+
                             }
+
+
+                            // $("#postComment").text("目前还没有评论哦");
+                            // console.log(data[j]['comments']);
+                            // $("#postComment").text(data[j]['comments']);
                         })
 
 
