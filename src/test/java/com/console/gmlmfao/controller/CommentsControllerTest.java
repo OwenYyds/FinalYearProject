@@ -12,19 +12,32 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class CommentsControllerTest {
 
     @Autowired
-    private ICommentsService commentsLikedService;
+    private ICommentsService commentsService;
 
     @Test
     void getAlLTest(){
-        commentsLikedService.list();
+        commentsService.list();
     }
 
     @Test
     void getGameComments(){
-        commentsLikedService.selectJoinList(Comments.class,
+        commentsService.selectJoinList(Comments.class,
                 new MPJQueryWrapper<>()
                         .select("comments")
                         .innerJoin("game g on g.gameid = t.gid")
         );
+    }
+
+    @Test
+    void add(){
+        Comments comments = new Comments();
+        comments.setUid(23);
+        comments.setGid(321);
+        comments.setComments("impressive!");
+
+             commentsService.save(comments);
+
+            ;
+
     }
 }

@@ -87,16 +87,6 @@ body{font-family: "Microsoft Yahei";}
     font-size: 12px;
     color: #8b8b8b;
 }
-te-dz-z-click-red {
-    width: 17px;
-    height: 17px;
-    display: block;
-    float: left;
-    background-image: url(../images/icon-all_01.png);
-    background-repeat: no-repeat;
-    background-position: -6px -198px;
-    margin-right: 5px;
-}
 .z-num {
     font-style: normal;
 }

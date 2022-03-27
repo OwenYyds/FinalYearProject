@@ -18,16 +18,16 @@ import java.util.List;
 public class CommentsController {
 
     @Autowired
-    private ICommentsService commentsLikedService;
+    private ICommentsService commentsService;
 
     @GetMapping("/getAllComments")
-    public void getComments(){
-        commentsLikedService.list();
+    public void getComments() {
+        commentsService.list();
     }
 
     @GetMapping("/thisGameComment")
-    public List<Comments> getGameComments(){
-        List<Comments> comments = commentsLikedService.selectJoinList(Comments.class,
+    public List<Comments> getGameComments() {
+        List<Comments> comments = commentsService.selectJoinList(Comments.class,
                 new MPJQueryWrapper<>()
                         .select("comments")
                         .innerJoin("game g on g.gameid = t.gid")
@@ -35,13 +35,23 @@ public class CommentsController {
         return comments;
     }
 
-    @PostMapping("/newComments")
-    public boolean newComments(HttpServletRequest request, HttpServletResponse response){
-        request.getParameter("aid");
-        request.getParameter("uid");
-        request.getParameter("gid");
-        request.getParameter("commetnts");
-        return false;
+    @PostMapping("/addComments")
+    public boolean newComments(HttpServletRequest request, HttpServletResponse response) {
+        Integer uid = Integer.valueOf(request.getParameter("uid"));
+        Integer gid = Integer.valueOf(request.getParameter("gid"));
+        String commetnts = request.getParameter("commetnts");
+
+        Comments comments = new Comments();
+        comments.setUid(uid);
+        comments.setGid(gid);
+        comments.setComments(commetnts);
+
+        if (uid != null || gid != null) {
+            return commentsService.save(comments);
+        } else {
+            return false;
+        }
     }
+
 
 }
