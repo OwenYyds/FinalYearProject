@@ -15,4 +15,5 @@ public class Game {
     private String date;
     private String profile;
     private String category;
+    private Integer liked;
 }

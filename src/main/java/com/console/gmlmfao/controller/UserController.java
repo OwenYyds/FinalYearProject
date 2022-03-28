@@ -43,6 +43,19 @@ public class UserController {
         return null;
     }
 
+    //获取当前登录用户信息
+    @GetMapping("getUser")
+    @ResponseBody
+    public User getUserInfoBySession(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        System.out.println(user);
+        if (user != null) {
+            return user;
+        }
+        return null;
+    }
+
     //登录
     @PostMapping("login")
     @ResponseBody
@@ -76,12 +89,14 @@ public class UserController {
         }
     }
 
+    //登出
     @GetMapping("/logout")
-    public void logout(HttpServletRequest request, HttpServletResponse response) {
-        request.getSession().removeAttribute("user");
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().invalidate();
         Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
+        return "L&R.html";
     }
 
 
@@ -152,15 +167,6 @@ public class UserController {
         }
     }
 
-    //获取当前登录用户信息
-    @GetMapping("getUser")
-    @ResponseBody
-    public User getUserInfo(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        System.out.println(user);
-        return user;
-    }
 
     //用户自行修改信息
     @PostMapping("edit")

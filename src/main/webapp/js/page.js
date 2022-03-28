@@ -6,26 +6,32 @@ $(function () {
         $(".footer").html(data);
     });
 })
+
 $(window).on('load', function () {
+    $.get("/users/getUser", {}, function (data) {
+        if (data) {
+            console.log(data)
+            console.log(data.username)
+            console.log("userFound")
+            $("#hidden").css({"display": "none"});
+            // $("#userInfoHidden").removeAttr("style");
+            $("#loginUser").css({
+                "background": "url(../images/HeadImage/" + data.head,
+                "background-size": "cover",
+                "background-position": "center center"
+                // "display":"inline-block"
+            });
+        } else {
+            console.log("nonUser")
+        }
+    })
     $(".loader").fadeOut();
     $("#preloder").delay(500).fadeOut("slow");
 });
 
-
-$(function () {
-    $.get("/users/checkUser", {}, function (data) {
-        if (data != null) {
-            $("#hidden").css({"display": "none"})
-            $("#loginUser").css({"background": "url(../images/HeadImage/" + data.head,
-                "background-size": "cover",
-                "background-position": "center center"
-            })
-        } else {
-            $("#loginUser").css({"display": "none"});
-        }
+$("#logout").click(function (){
+    $.get("/users/logout",{},function (){
+       window.location.href = "L&D.html";
     })
 })
-// $("#logout").click(function (){
-//         location.href = "L&D.html";
-// })
 

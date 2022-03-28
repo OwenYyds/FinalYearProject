@@ -135,7 +135,7 @@ function gameInfoShow() {
                             }
                         })
 
-
+                        //post
                         $('#postBtn').click(function () {
                             $.get("/users/checkUser", {}, function (data) {
                                 if (data != null) {
@@ -174,7 +174,7 @@ function gameInfoShow() {
                                         $('#content').focus();
                                     }
                                     $("#content").val("");
-                                    $('').append(b);//显示多行评论
+                                    $('').append(b);//turn on multiple comments
                                 } else {
                                     alert("请登录后操作！！！")
                                     window.location.href = "L&R.html";
