@@ -5,6 +5,8 @@ import lombok.Data;
 
 @Data
 public class News {
-    private String newsimage;
-    private String newstext;
+    private Integer id;
+    private String title;
+    private String content;
+    private String time;
 }
