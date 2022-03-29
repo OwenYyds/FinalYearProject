@@ -2,6 +2,7 @@ package com.console.gmlmfao.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.console.gmlmfao.pojo.Post;
 import com.console.gmlmfao.service.IUserService;
 import com.console.gmlmfao.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +27,26 @@ public class UserController {
     @GetMapping("checkUser")
     @ResponseBody
     public User checkUserByCookieInSession(HttpServletRequest req, HttpServletResponse res) {
-        Cookie[] cookies = req.getCookies();
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
-                    String token = cookie.getValue();
-                    QueryWrapper<User> userFound = queryWrapper.eq("token", token);
-                    User one = userService.getOne(userFound);
-                    return one;
-                }
-            }
+//        Cookie[] cookies = req.getCookies();
+//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+//        if (cookies != null) {
+//            for (Cookie cookie : cookies) {
+//                if (cookie.getName().equals("token")) {
+//                    String token = cookie.getValue();
+//                    QueryWrapper<User> userFound = queryWrapper.eq("token", token);
+//                    User one = userService.getOne(userFound);
+//                    return one;
+//                }
+//            }
+//        } else {
+//            return null;
+//        }
+        User user = (User) req.getSession().getAttribute("user");
+        if (user != null) {
+            return user;
         } else {
             return null;
         }
-        return null;
     }
 
     //获取当前登录用户信息
@@ -49,11 +55,14 @@ public class UserController {
     public User getUserInfoBySession(HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        System.out.println(user);
         if (user != null) {
+            System.out.println(user);
+            System.out.println("userfound");
             return user;
+        } else {
+            System.out.println("nonuser");
+            return null;
         }
-        return null;
     }
 
     //登录
@@ -82,9 +91,9 @@ public class UserController {
         } else {
             //登录成功
             User LoginUser = userService.getOne(queryWrapper);
+            session.setAttribute("user", LoginUser);
             String token = LoginUser.getToken();
             res.addCookie(new Cookie("token", token));
-            session.setAttribute("user", LoginUser);
             return "登录成功";
         }
     }
@@ -169,16 +178,29 @@ public class UserController {
 
 
     //用id查找用户
-    @GetMapping("/getUsernicknameById" + "{id}")
-    public User getUserNicknameById(@PathVariable String id) {
-        if (!id.isEmpty()) {
-
+    @GetMapping("{ids}")
+    public List<User> getUserNicknameByIds(@PathVariable Integer ids) {
+        if (ids != null) {
             QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-            QueryWrapper<User> userid = userQueryWrapper.eq("userid", id);
-            return userService.getById(userid);
-        }else {
+            QueryWrapper<User> userid = userQueryWrapper.eq("userid", ids).select("nickname");
+//            return userService.listByIds();
+            return null;
+        } else {
             return null;
         }
+    }
+
+    //添加到用户收藏
+    @PostMapping("/collection" + "{gid}" + "{uid}")
+    public boolean addGameIdToUserCollect(@PathVariable Integer gid, @PathVariable String uid) {
+        if (gid != null) {
+            QueryWrapper<User> userQueryWrapper = new QueryWrapper<User>();
+            User user = new User();
+            user.setCollect(gid);
+            QueryWrapper<User> collection = userQueryWrapper.eq("collect", uid);
+            return userService.update(user,collection);
+        }
+        return false;
     }
 
 

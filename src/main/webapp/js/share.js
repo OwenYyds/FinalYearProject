@@ -1,4 +1,6 @@
-
+$(function (){
+    layer.msg('hello')
+})
 
 
 function ShowAllQuestions(){

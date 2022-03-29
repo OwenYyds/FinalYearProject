@@ -17,5 +17,5 @@ public class User {
     private String loved;
     private String birthday;
     private String token;
-    private List<Game> collect;
+    private Integer collect;
 }

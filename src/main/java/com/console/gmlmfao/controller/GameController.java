@@ -90,8 +90,7 @@ public class GameController {
     public boolean updateGameByLiked(HttpServletRequest request, HttpServletResponse response) {
         Integer gameid = Integer.valueOf(request.getParameter("gameid"));
         Integer liked = Integer.valueOf(request.getParameter("liked"));
-
-        if (gameid>0 && liked>0){
+        if (gameid>0){
             Game game = new Game();
             game.setLiked(liked);
             QueryWrapper<Game> plus1 = new QueryWrapper<Game>().eq("gameid", gameid);

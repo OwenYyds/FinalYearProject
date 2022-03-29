@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="utils/hsycmsAlert.min.css">
 </head>
 <body>
 
@@ -93,14 +94,19 @@
                         <div class="gameInfo-content">
                             <div>开发商：<span id="game-info-developer">developer</span></div>
                             <div>发行日期：<span id="game-info-date">date</span></div>
-                            <div class="game-profile-area">游戏介绍：
-                                <div class="game-profile">
-                                    describe
-                                </div>
-                            </div>
-                            <div><a href="javascript:"><i id="likedBtn" class="fa fa-thumbs-o-up fa-2x" aria-hidden="true"></i></a><span id="liked" class="text-warning h5 ms-2">99</span>人觉得很赞</div>
                         </div>
                     </div>
+                </div>
+                <div class="container row">
+                    <div class="game-profile-area ms-4">游戏介绍：
+                        <div class="game-profile">
+                            describe
+                        </div>
+                    </div>
+                </div>
+                <div class="container row mb-4">
+                    <div class="col-lg-6 col-md-8 col-sm-12"><span id="liked" class="text-warning h2 ms-2">99</span>人觉得很赞<a href="javascript:;" class="btn btn-info fa fa-thumbs-o-up fa-2x ms-2" id="likedBtn"></a></div>
+                    <button id="collection" class="col-lg btn btn-outline-danger col-md-4 col-sm-12">添加到收藏</button>
                 </div>
                 <div id="commentList" class="container row">
                    <!-- <div class="card">
@@ -114,8 +120,8 @@
                     <div class="input-group">
                         <textarea id="content" class="form-control" aria-label="With textarea" contenteditable="true"></textarea>
                     </div>
-                    <button id="postBtn" type="button" class="btn btn-outline-success w-25 ms-5">发表评论</button>
                 </div>
+                <button id="postBtn" type="button" class="btn btn-outline-success w-25 mt-2 ms-4">发表评论</button>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
@@ -129,6 +135,7 @@
 
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
+<script src="utils/hsycmsAlert.min.js"></script>
 <script src="js/page.js"></script>
 <script src="js/scrollreveal.min.js"></script>
 <script src="js/animate.js"></script>

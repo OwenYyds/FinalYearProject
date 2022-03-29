@@ -38,6 +38,11 @@
     border: none;
     font-size: medium;
 }
+
+#likedBtn{
+    border: none;
+    background: none;
+}
 .search-area{
     position: relative;
 }

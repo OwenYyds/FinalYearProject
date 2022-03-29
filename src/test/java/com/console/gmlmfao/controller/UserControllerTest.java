@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @SpringBootTest
 public class UserControllerTest {
@@ -49,9 +51,11 @@ public class UserControllerTest {
 
 //        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
 //        QueryWrapper<User> userid = userQueryWrapper.eq("userid", 1);
-        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-        QueryWrapper<User> userid = userQueryWrapper.eq("userid", 55);
-        userService.getOne(userid);
+//        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+//        QueryWrapper<User> userid = userQueryWrapper.eq("userid", 55);
+//        userService.getOne(userid);
+
+//         userService.listByIds();
 
 
     }
