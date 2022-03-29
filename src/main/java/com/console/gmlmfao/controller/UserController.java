@@ -136,7 +136,7 @@ public class UserController {
     }
 
     //注册用户名校验规则
-    public String Pusername(String username) {
+    private String Pusername(String username) {
         boolean bool = false;
         if (username.length() >= 6 && username.length() <= 10) {
             for (int i = 0; i < username.length(); i++) {
@@ -158,12 +158,26 @@ public class UserController {
     }
 
     //注册密码校验规则
-    public String Ppassword(String password) {
+    private String Ppassword(String password) {
         //用户名格式正确，判断密码长度
         if (password.length() >= 6 && password.length() <= 12) {
             return "";
         } else {
             return "密码长度需为6~12位";
+        }
+    }
+
+
+    //用id查找用户
+    @GetMapping("/getUsernicknameById" + "{id}")
+    public User getUserNicknameById(@PathVariable String id) {
+        if (!id.isEmpty()) {
+
+            QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+            QueryWrapper<User> userid = userQueryWrapper.eq("userid", id);
+            return userService.getById(userid);
+        }else {
+            return null;
         }
     }
 

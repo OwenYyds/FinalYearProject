@@ -124,17 +124,20 @@ function gameInfoShow() {
                             $.post("/games/addLikedNum", {"liked": likedNum + 1, "gameid": gameid}, function (data) {
                                 if (data) {
                                     $("#liked").text(likedNum + 1)
-                                    $("#liked").css({"color":"yellowgreen"})
-                                }else {
+                                    $("#liked").css({"color": "yellowgreen"})
+                                } else {
                                     alert("server error");
                                 }
                             })
                         });
                         $.get("/comments/getCommentOfThisGame", {"gameid": gameid}, function (data) {
                             if (data != []) {
+                                // $.get("/user/getUsernicknameById",{"id":data.uid},function (data){
+                                //     let nickName= data.nickname;
+                                // })
                                 for (let j = 0; j < data.length; j++) {
                                     console.log(data)
-                                    let commentList = '<div class="card-body bg-light mt-3 rounded-pill"><h6 id="postUser" class="card-subtitle mb-2 text-muted text-warning">' + +'<span class="ms-5">' + data[j].time + '</span></h6><p id="postComment" class="card-text">' + data[j].comments + '</p>  </div>';
+                                    let commentList = '<div class="card-body bg-light mt-3 rounded-pill"><h6 id="postUser" class="card-subtitle mb-2 text-muted text-warning">' + data.uid + '<span class="ms-5">' + data[j].time + '</span></h6><p id="postComment" class="card-text">' + data[j].comments + '</p>  </div>';
                                     parentCommentArea += commentList;
                                     $("#commentList").html(parentCommentArea);
                                     // $("#commentList").html(commentList);
