@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class GameControllerTest {
 
-//    @Autowired
-//    private IGameService gameService;
+    @Autowired
+    private IGameService gameService;
 
     @Test
     void gameTest(int a) {
@@ -37,8 +37,12 @@ public class GameControllerTest {
 
         System.out.println(a);
     }
+
     @Test
-    void ttt(){
-        gameTest(0);
+    void ttt() {
+        Game game = new Game();
+        game.setGameid(1);
+        game.setLiked(22);
+        gameService.updateById(game);
     }
 }

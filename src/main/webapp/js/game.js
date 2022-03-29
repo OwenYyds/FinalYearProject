@@ -105,7 +105,6 @@ function gameInfoShow() {
             data: {},
             dataType: "json",
             success: function (res) {
-
                 for (let i = 0; i < res.length; i++) {
                     let parentCommentArea = '<div class="card bg-info"></div>';
                     if (res[i]['cname'] == text) {
@@ -117,7 +116,20 @@ function gameInfoShow() {
                         $('#game-info-developer').text(res[i]['developer']);
                         $('#game-info-date').text(res[i]['date']);
                         $('.game-profile').text(res[i]['profile']);
+                        $('#liked').text(res[i]['liked']);
                         let gameid = res[i].gameid;
+                        let likedNum = res[i].liked;
+                        $("#likedBtn").click(function () {
+                            $(this).addClass("fa fa-thumbs-up fa-5x");
+                            $.post("/games/addLikedNum", {"liked": likedNum + 1, "gameid": gameid}, function (data) {
+                                if (data) {
+                                    $("#liked").text(likedNum + 1)
+                                    $("#liked").css({"color":"yellowgreen"})
+                                }else {
+                                    alert("server error");
+                                }
+                            })
+                        });
                         $.get("/comments/getCommentOfThisGame", {"gameid": gameid}, function (data) {
                             if (data != []) {
                                 for (let j = 0; j < data.length; j++) {
@@ -127,7 +139,7 @@ function gameInfoShow() {
                                     $("#commentList").html(parentCommentArea);
                                     // $("#commentList").html(commentList);
                                 }
-                            }else {
+                            } else {
                                 // $("#postComment").text("目前还没有评论哦");
                                 // console.log(data[j]['comments']);
                                 // $("#postComment").text(data[j]['comments']);

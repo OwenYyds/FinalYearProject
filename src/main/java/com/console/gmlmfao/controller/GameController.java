@@ -2,9 +2,9 @@ package com.console.gmlmfao.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.console.gmlmfao.pojo.Game;
+import com.console.gmlmfao.pojo.Post;
 import com.console.gmlmfao.service.IGameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,7 +51,7 @@ public class GameController {
 
     @PostMapping("addGame")
     @ResponseBody
-    public String addGame(HttpServletRequest request, HttpServletResponse response){
+    public String addGame(HttpServletRequest request, HttpServletResponse response) {
         Integer gameid = Integer.valueOf(request.getParameter("gameID1"));
         String gameimage = request.getParameter("gameImage");
         String cname = request.getParameter("cname");
@@ -74,14 +74,30 @@ public class GameController {
         game.setDeveloper(developer);
         game.setProfile(profile);
 
-        if (deleteGameID==null){
+        if (deleteGameID == null) {
             gameService.save(game);
             return "added one game";
-        }else {
+        } else {
             gameService.removeById(deleteGameID);
         }
 
         return "Done";
 
+    }
+
+
+    @PostMapping("/addLikedNum")
+    public boolean updateGameByLiked(HttpServletRequest request, HttpServletResponse response) {
+        Integer gameid = Integer.valueOf(request.getParameter("gameid"));
+        Integer liked = Integer.valueOf(request.getParameter("liked"));
+
+        if (gameid>0 && liked>0){
+            Game game = new Game();
+            game.setLiked(liked);
+            QueryWrapper<Game> plus1 = new QueryWrapper<Game>().eq("gameid", gameid);
+            return gameService.update(game, plus1);
+        }else {
+            return false;
+        }
     }
 }
