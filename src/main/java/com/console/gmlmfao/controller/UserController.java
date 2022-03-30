@@ -6,6 +6,7 @@ import com.console.gmlmfao.pojo.Post;
 import com.console.gmlmfao.service.IUserService;
 import com.console.gmlmfao.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-@RestController
+@Controller
 @RequestMapping("/users")
 public class UserController {
 
@@ -105,6 +106,7 @@ public class UserController {
         Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
+        System.out.println("推出了");
         return "L&R.html";
     }
 

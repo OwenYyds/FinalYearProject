@@ -1,4 +1,3 @@
-
 $(function () {
     //登录功能
     $("#login").on("submit", function (e) {
@@ -12,32 +11,23 @@ $(function () {
             dataType: "text",
             success: function (data) {
                 if (data == "用户名不能为空") {
-                    let info = $('<div class="error-info"></div>');
-                    // // info.text(data);
-                    $('.usernameInput').addClass('form-error');
-                    $('.usernameInput').append(data);
-
+                    layer.msg('请输入用户名');
                 } else if (data == "密码不能为空") {
-                    let info = $('<div class="error-info"></div>');
-                    // // info.text(data);
-                    $('.passwordInput').addClass('form-error');
-                    $('.passwordInput').append(data);
-
+                    layer.msg('请输入密码');
                 } else if (data == "用户名或密码错误") {
-                    let info = $('<div class="error-info"></div>');
-                    // // info.text(data);
-                    $('.usernameInput').addClass('form-error');
-                    $('.usernameInput').append(data);
+                    layer.msg('用户名或密码错误');
                 } else {
                     if ($('.usernameInput>input').val().toLowerCase() == "admin") {
-                        window.location.href = "admin/index.html";
+                        layer.msg("管理员你好，即将进入！")
+                        setTimeout(window.location.href = "admin/index.html",4000)
                     } else {
-                        window.location.href = "index.html";
+                        layer.msg("登录成功，即将进入！");
+                        setTimeout(window.location.href = "index.html",4000)
                     }
                 }
             },
             error: function () {
-                alert("请求失败！服务器没在状态呢");
+                layer.msg('请求失败！服务器没在状态呢');
             }
         })
     })
@@ -53,48 +43,27 @@ $(function () {
             dataType: "text",
             success: function (data) {
                 if (data == "用户名不能为空") {
-                    let info = $('<div class="error-info"></div>');
-                    // info.text(data);
-                    $('.CusernameInput').addClass('form-error');
-                    $('.CusernameInput').append(data);
+                    layer.msg(data);
                 } else if (data == "密码不能为空") {
-                    let info = $('<div class="error-info"></div>');
-                    // info.text(data);
-                    $('.CpasswordInput').addClass('form-error');
-                    $('.CpasswordInput').append(data);
+                    layer.msg(data);
                 } else if (data == "用户名长度需要为长度为6~10位") {
-                    let info = $('<div class="error-info"></div>');
-                    // info.text(data);
-                    $('.CusernameInput').addClass('form-error');
-                    $('.CusernameInput').append(data);
+                    layer.msg(data);
                 } else if (data == "用户名需要0~9的数字组成,长度为6~10位") {
-                    let info = $('<div class="error-info"></div>');
-                    // info.text(data);
-                    $('.CusernameInput').addClass('form-error');
-                    $('.CusernameInput').append(data);
-                } else if (data == "密码长度需为6~12位") {
-                    let info = $('<div class="error-info"></div>');
-                    // info.text(data);
-                    $('.CpasswordInput').addClass('form-error');
-                    $('.CpasswordInput').append(data);
+                    layer.msg(data);
+                } else if (data == "用户名需要0~9的数字组成,长度为6~10位") {
+                    layer.msg(data);
                 } else if (data == "两次输入的密码不一致") {
-                    let info = $('<div class="error-info"></div>');
-                    // info.text(data);
-                    $('.Cpassword2Input').addClass('form-error');
-                    $('.CpasswordInput').append(data);
+                    layer.msg(data);
                 } else if (data == "注册失败") {
-                    let info = $('<div class="error-info"></div>');
-                    info.text("此用户名已经存在");
-                    $('.CusernameInput').addClass('form-error');
-                    $('.CusernameInput').append(data);
+                    layer.msg(data);
                 } else {
-                    alert("注册成功");
-                    window.location.href="L&R.html";
+                    layer.msg("注册成功啦,马上登录吧");
+                    setTimeout(window.location.href = "L&R.html", 4000)
+                    // window.location.href="L&R.html";
                 }
-
             },
             error: function () {
-                alert("请求失败！")
+                layer.msg("服务器没在状态呢");
             }
         })
 
@@ -132,9 +101,5 @@ $(function () {
         }
     })
 
-    $('.form-input').on('click', function () {
-        $('.form-input').removeClass('form-error');
-        $('.form-input>.error-info').remove();
-    })
 
 })
