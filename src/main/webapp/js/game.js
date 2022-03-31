@@ -166,34 +166,48 @@ function gameInfoShow() {
                                     // $("#postComment").text("目前还没有评论哦");
                                     // console.log(data[j]['comments']);
                                     // $("#postComment").text(data[j]['comments']);
-                                    let addContent = '<p class="h3 text-center text-secondary bg-light">暂时没有评论哦</p>';
+                                    let addContent = '<p id="nonComment" class="h3 text-center text-secondary bg-light">暂时没有评论哦</p>';
                                     $("#commentList").html(addContent);
                                 }
                             });
 
                             //post
                             $('#postBtn').click(function () {
-                                checkUserIsLogined();
-                                let postComments = $('#content').val();
-                                let b = postComments;
-                                if (postComments != "") {
-                                    let time = getTime();
-                                    $.post("/comments/addComments", {
-                                        "uid": LoginedUserId,
-                                        "gid": gameid,
-                                        "comments": postComments,
-                                        "time": time
-                                    }, function () {
-                                        alert("评论成功！！！")
-                                        let addContent = '<div class="card-body bg-light mt-3 rounded-pill"><h6 id="postUser" class="card-subtitle mb-2 text-muted text-warning">' + LoginedUserName + '<span class="ms-5">' + time + '</span></h6><p id="postComment" class="card-text">' + postComments + '</p></div>';
-                                        $("#commentList").append(addContent);
-                                    })
-                                } else {
-                                    alert('发布内容不能为空');
-                                    $('#content').focus();
-                                }
-                                $("#content").val("");
-                                $('').append(b);//turn on multiple comments
+                                $.get("/users/getUser", {}, function (data) {
+                                    if (data.length < 1) {
+                                        layer.msg("请登录后操作");
+                                        // window.location.href = "L&R.html";
+                                    } else {
+                                        // console.log(data);
+                                        // console.log(data.userid)
+                                        let LoginedUserId = data.userid;
+                                        let LoginedUserName = data.nickname;
+                                        let postComments = $('#content').val();
+                                        let b = postComments;
+                                        if (postComments != "") {
+                                            let time = getTime();
+                                            $.post("/comments/addComments", {
+                                                "uid": LoginedUserId,
+                                                "gid": gameid,
+                                                "comments": postComments,
+                                                "time": time
+                                            }, function () {
+                                                layer.msg("评论成功！！！")
+                                                // let hasComments = $().get
+                                                console.log(hasComments);
+                                                // if (hasComments='暂时没有评论哦') {
+                                                //     hasComments.empty();}
+                                                    let addContent = '<div class="card-body bg-light mt-3 rounded-pill"><h6 id="postUser" class="card-subtitle mb-2 text-muted text-warning">' + LoginedUserName + '<span class="ms-5">' + time + '</span></h6><p id="postComment" class="card-text">' + postComments + '</p></div>';
+                                                    $("#commentList").append(addContent);
+                                            })
+                                        } else {
+                                            layer.msg('发布内容不能为空');
+                                            $('#content').focus();
+                                        }
+                                        $("#content").val("");
+                                        $('').append(b);//turn on multiple comments
+                                    }
+                                })
                             })
 
 
@@ -211,7 +225,7 @@ function gameInfoShow() {
                             $("#collection").click(function () {
                                 $.get("/users/getUser", {}, function (data) {
                                     if (data.length < 1) {
-                                        alert("请登录后操作！！！");
+                                        layer.msg("请登录后操作！！！");
                                     } else {
                                         $.post("/users/collection" + parseInt(gameid) + "/" + parseInt(data.userid), {}, function () {
                                             $(this).addClass("btn-danger");
