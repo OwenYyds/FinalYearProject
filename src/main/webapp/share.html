@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="utils/css/layui.css">
+    <link rel="stylesheet" href="css/share.css">
+
 </head>
 <body>
 <div id="preloder">
@@ -46,63 +48,22 @@
                 <button class="btn btn-outline-success" type="submit">查找</button>
             </form>
         </div>
-        <div type="button" class="btn btn-outline-danger col-4">点这里发表内容</div>
+        <div type="button" class="btn btn-outline-danger col-4" data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatever="@getbootstrap">点这里发表内容</div>
     </div>
 </section>
 
 <div class="container bg-light mt-2 p-5">
     <div class="container">
         <div class="row g-4">
-            <div class="col col-lg-7 col-sm-12">
+            <div id="postArea" class="col col-lg-7 col-sm-12 border-info">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">关于次世代主机的购买 <span><a href="#"><i class="fa fa-thumbs-up" aria-hidden="true">55</i></a></span></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">大聪明 <span>2022-01-13</span></h6>
-                        <p class="card-text">Stock
+                        <h5 id="title" class="card-title">关于次世代主机的购买 <button class="fa fa-thumbs-up bg-warning">44</button></h5>
+                        <h6 id="postUser" class="card-subtitle mb-2 text-muted">大聪明 <span id="time">2022-01-13</span></h6>
+                        <p id="content" class="card-text">Stock
                             X这个平台类似于国内的得物，说白了也是二道贩子。但是因为海外XSX的价格较低，就算被黄牛加了一次价，还是比国行便宜，所以可以选择海淘。。。。点进去就能看到当前的最高出价了。StockX在买家出价后，会把价格发给卖家，如果卖家满意买家出的价格，就会自动成交。出价的时候记得点击添加折扣，把要到的新人优惠码填进去。注意，一定要注意价格，在不算邮费的情况下，保证机器的实际购买价格在清关日的汇率下低于4000人民币。</p>
-                        <a href="#" class="link-info">详情</a>
-                        <a href="#" class="link-warning">回复</a>
-                    </div>
-                </div>
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h5 class="card-title">【科普】关于XBOX手柄的一些冷知识，小常识，隐藏功能 <span><a href="#"><i class="fa fa-thumbs-up"
-                                                                                                aria-hidden="true">43</i></a></span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">太极拳 <span>2022-02-15</span></h6>
-                        <p class="card-text">Stock
-                            1.从XBOXONE手柄开始，微软手柄的扳机键就放弃了原先一直在XBOX360及以前手柄上使用的电位器，进而改成了霍尔磁感应元件，理论上无论手柄最后用成什么渣渣成色，这俩键都不会坏。另外霍尔原理的摇杆也由谷粒科技研发出来了，下半年推出，至于好不好用只要到时才知道了。</p>
-                        2.精英手柄快速开启\关闭背键功能
-                        .................
-                        <a href="#" class="link-info">详情</a>
-                        <a href="#" class="link-warning">回复</a>
-                    </div>
-                </div>
-                <div class="card mt-5">
-                    <div class="card-body">
-                        <h5 class="card-title"> Xbox Series X 支持120帧的游戏 <span><a href="#"><i class="fa fa-thumbs-up"
-                                                                                             aria-hidden="true">5</i></a></span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">楼的哇 <span>2022-02-33</span></h6>
-                        <p class="card-text">Stock
-                            堡垒之夜
-                            战争机器5（多人）
-                            与您的朋友打高尔夫球（通过 FPS Boost）
-                            光环无限（多人）
-                            光环：士官长合集
-                            光环：斯巴达突击（通过 FPS Boost）
-                            空洞騎士：虚空之心版（通过 FPS Boost）
-                            超猎都市（通过 FPS Boost）
-                            岛屿拯救者（通过 FPS Boost）
-                            判官
-                            古怪之王
-                            乐高漫威超级英雄（通过 FPS Boost）
-                            乐高漫威复仇者联盟（通过 FPS Boost）
-                            乐高霍比特人（通过 FPS Boost）
-                            疯狂的麦克斯（通过 FPS Boost）
-                            质量效应传奇版</p>
-                        <a href="#" class="link-info">详情</a>
-                        <a href="#" class="link-warning">回复</a>
+<!--                        <a href="#" class="link-info">详情</a>-->
+<!--                        <a href="#" class="link-warning">回复</a>-->
                     </div>
                 </div>
             </div>
@@ -187,6 +148,34 @@
     </div>
 </div>
 
+
+<!--//postModal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered postArea">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">发布评论</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">在这里输入你的标题:</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">在这里输入内容:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">发布</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer class="footer container-fluid mt-3">
 </footer>
