@@ -25,8 +25,11 @@ body{
 .top-nav{
     padding-bottom: 2rem;
 }
+.lefBar{
+    width: 100px;
+}
+
 .game-manage{
-    margin-top: 2rem;
     padding: 4rem;
     box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
     width: 100%;

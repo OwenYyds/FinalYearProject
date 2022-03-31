@@ -4,6 +4,7 @@ $(function(){
     gameDelete();
     allUserLoad();
     userDelete();
+    allCommentsLoad()
 })
 
 function allGameLoad() {
@@ -162,5 +163,35 @@ function userDelete(){
                 })
             }
         })
+    })
+}
+
+
+function allCommentsLoad(){
+    $.get("/comments/getAllComments",{},function (data){
+        if (data.length>0){
+            console.log(data);
+            let res = [];
+            for (let i = 0; i < data.length; i++) {
+                console.log(data[i].cid)
+                let element = `<tr><td>${data[i].cid}</td>
+                <td>${data[i].gid}</td>
+                <td>${data[i].uid}</td>
+                <td>${data[i].time}</td>
+                <td>${data[i].comments}</td>
+                `
+                res.push(element);
+            }
+            let head = `<tr>
+            <th>留言ID</th>
+            <th>游戏ID</th>
+            <th>用户ID</th>
+            <th>时间</th>
+            <th>留言内容</th>
+        </tr>`
+            $('.comments-load').empty();
+            $('.comments-load').append(head);
+            $('.comments-load').append(res.join(''));
+        }
     })
 }

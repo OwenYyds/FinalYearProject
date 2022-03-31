@@ -25,8 +25,8 @@ public class CommentsController {
     private IUserService userService;
 
     @GetMapping("/getAllComments")
-    public void getComments() {
-        commentsService.list();
+    public List<Comments> getComments() {
+        return commentsService.list();
     }
 
     @GetMapping("/getCommentOfThisGame")
@@ -37,7 +37,7 @@ public class CommentsController {
                         .select("cid", "gid", "uid", "comments", "time")
                         .leftJoin("game g on g.gameid = t.gid where gameid = " + gameid)
         );
-        if (comments.size()<1) {
+        if (comments.size() < 1) {
             /*System.out.println(comments.size() + "kong");
             ArrayList<Comments> comments1 = new ArrayList<>();
             System.out.println(comments1);
