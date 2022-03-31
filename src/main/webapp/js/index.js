@@ -28,7 +28,7 @@ $(function () {
             })
         },
         error: function () {
-            alert("加载数据失败");
+            layer.msg("加载数据失败");
         }
     })
 
@@ -65,7 +65,7 @@ $(function () {
 
         },
         error: function () {
-            alert("加载数据失败");
+            layer.msg("加载数据失败");
         }
     })
 

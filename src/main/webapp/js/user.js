@@ -41,10 +41,11 @@ function userLoad(){
             console.log(res);
             let loved = res.loved;
             console.log("LOVED"+loved)
-            $('.getUsername').text(res['nickname']?res['nickname']:res['userID']);
+            $('.getUsername').text(res['nickname']?res['nickname']:res['userid']);
             $('.getGender').text(res['gender']?res['gender']:"保密");
             $('.getBirthday').text(res['birthday']?res['birthday']:"保密");
-            $('.getUserID').text(res['userID']);
+            $('.getUserID').text(res['userid']);
+            console.log(res.userid)
             $('.getProfile').text(res['profile']?res['profile']:"这个人很懒，什么都没有写");
             $('#userHeadImage').attr('src',res['head']?"../images/HeadImage/"+res['head']:"../images/HeadImage/head0.jpg");
             $(".headInput").each(function(index){
@@ -60,7 +61,7 @@ function userLoad(){
                 }
                }
             })
-            $('#editNickname').attr('value',res['nickname']?res['nickname']:res['userID']);
+            $('#editNickname').attr('value',res['nickname']?res['nickname']:res['userid']);
             if(res['gender'] == "男"){
                 $('#sex1').attr('checked','checked');
             }
@@ -88,7 +89,7 @@ function userInfoEdit(){
                 $("#edit-userInfo").modal('hide');
             }
             else{
-                alert("修改失败");
+                layer.msg("修改失败");
             }
         }
     })
@@ -125,6 +126,11 @@ function headEdit(){
         dataType:"text",
         success: function(){
             $("#userHeadEdit").modal('hide');
+            layer.msg("修改成功");
+            userLoad();
+        },
+        error: function (){
+            layer.msg("修改失败");
             userLoad();
         }
     })
