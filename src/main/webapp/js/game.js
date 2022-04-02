@@ -194,11 +194,11 @@ function gameInfoShow() {
                                             }, function () {
                                                 layer.msg("评论成功！！！")
                                                 // let hasComments = $().get
-                                                console.log(hasComments);
+                                                // console.log(hasComments);
                                                 // if (hasComments='暂时没有评论哦') {
                                                 //     hasComments.empty();}
-                                                    let addContent = '<div class="card-body bg-light mt-3 rounded-pill"><h6 id="postUser" class="card-subtitle mb-2 text-muted text-warning">' + LoginedUserName + '<span class="ms-5">' + time + '</span></h6><p id="postComment" class="card-text">' + postComments + '</p></div>';
-                                                    $("#commentList").append(addContent);
+                                                let addContent = '<div class="card-body bg-light mt-3 rounded-pill"><h6 id="postUser" class="card-subtitle mb-2 text-muted text-warning">' + LoginedUserName + '<span class="ms-5">' + time + '</span></h6><p id="postComment" class="card-text">' + postComments + '</p></div>';
+                                                $("#commentList").append(addContent);
                                             })
                                         } else {
                                             layer.msg('发布内容不能为空');

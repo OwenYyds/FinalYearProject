@@ -27,3 +27,8 @@ function ShowAllQuestions(){
         }
     })
 }
+
+
+function post(){
+
+}
