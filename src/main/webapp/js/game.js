@@ -43,22 +43,25 @@ function category() {
 }
 
 function allGameLoad() {
+    let currentPage = $("#currentPage").text();
+    console.log(currentPage);
     $.ajax({
         type: "GET",
-        url: "/games/getAll",
+        url: "/games/getAllGameByPage/"+currentPage+"/"+10,
         data: {},
         dataType: "json",
         success: function (res) {
             let data = [];
-            for (let i = 0; i < res.length; i++) {
+            console.log(res.records)
+            for (let i = 0; i < res.records.length; i++) {
                 let element = `<li class="gameList-item col-lg-3 col-md-4 col-6">
                 <div class="game-frame"  href="#gameInfo" data-bs-toggle="modal">
-                    <img src="../images/GameImage/${res[i]['gameimage']}">
+                    <img src="../images/GameImage/${res.records[i]['gameimage']}">
                     <div class="score-show">
-                        <div class="score">${res[i]['score']}</div>
+                        <div class="score">${res.records[i]['score']}</div>
                     </div>
                 </div>
-                <div class="game-name">${res[i]['cname']}</div>
+                <div class="game-name">${res.records[i]['cname']}</div>
             </li>`
                 data.push(element);
             }

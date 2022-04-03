@@ -62,7 +62,6 @@ function getPostTime() {
 }
 
 
-
 $("#post").click(function () {
     $.get("/users/getUser", {}, function (data) {
         if (data.length < 1) {

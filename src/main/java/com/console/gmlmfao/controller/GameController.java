@@ -1,6 +1,8 @@
 package com.console.gmlmfao.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.console.gmlmfao.pojo.Game;
 import com.console.gmlmfao.pojo.Post;
 import com.console.gmlmfao.service.IGameService;
@@ -26,6 +28,12 @@ public class GameController {
     @ResponseBody
     public List<Game> getAllGames() {
         return gameService.list();
+    }
+
+    @GetMapping("getAllGameByPage/{CurrentPage}/{PageSize}")
+    public IPage<Game> getAllGamesByPage(@PathVariable int CurrentPage, @PathVariable int PageSize) {
+        IPage page = new Page(CurrentPage,PageSize);
+        return gameService.page(page);
     }
 
     @PostMapping("search")

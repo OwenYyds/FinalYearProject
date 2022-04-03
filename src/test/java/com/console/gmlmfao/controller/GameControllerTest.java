@@ -1,6 +1,8 @@
 package com.console.gmlmfao.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.console.gmlmfao.pojo.Game;
 import com.console.gmlmfao.service.IGameService;
 import org.junit.jupiter.api.Test;
@@ -45,4 +47,12 @@ public class GameControllerTest {
         game.setLiked(22);
         gameService.updateById(game);
     }
+
+    @Test
+    void ttt1(){
+        IPage page = new Page(2,5);
+
+        gameService.page(page);
+    }
+
 }

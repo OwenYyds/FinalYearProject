@@ -1,6 +1,8 @@
 package com.console.gmlmfao.controller;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.console.gmlmfao.pojo.Comments;
 import com.console.gmlmfao.service.ICommentsService;
 import com.github.yulichang.query.MPJQueryWrapper;
@@ -38,6 +40,15 @@ public class CommentsControllerTest {
              commentsService.save(comments);
 
             ;
+
+    }
+
+
+
+    @Test
+    void getPage(){
+        IPage page =new Page(1,5);
+        commentsService.page(page,null);
 
     }
 }
