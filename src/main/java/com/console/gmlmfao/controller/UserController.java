@@ -57,11 +57,8 @@ public class UserController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user != null) {
-            System.out.println(user);
-            System.out.println("userfound");
             return user;
         } else {
-            System.out.println("nonuser");
             return null;
         }
     }
