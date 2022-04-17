@@ -4533,3 +4533,11 @@ body[data-theme='translucent'] .jconfirm {
 [data-sidebarbg*='color_'] .nav-drawer > .active > a:active {
     border-color: rgba(255, 255, 255, .35);
 }
+td{
+    padding: 0 10px;
+    width: 40px;
+    height: 30px;
+    overflow: hidden;
+    text-overflow: hidden;
+    white-space: nowrap;
+}

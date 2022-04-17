@@ -1,13 +1,14 @@
 <script>
     $(function () {
         $.get("/games/getAll/", function (data) {
-            let tcheckbox = '<tr><td><label class="lyear-checkbox checkbox-primary"> <input type="checkbox" name="ids[]" value="1"><span></span></label> </td>';
+            let html ='';
+            let tcheckbox = '<tr><td class=""><label class="lyear-checkbox checkbox-primary"> <input type="checkbox" name="ids[]" value="1"><span></span></label> </td>';
             let tedite = '<td><div class="btn-group"> <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a><a class="btn btn-xs btn-default" href="#!" title="查看" data-toggle="tooltip"><i class="mdi mdi-eye"></i></a> <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a></div></td></tr>';
             for (let i = 0; i < data.length; i++) {
-                let tds = ' <td>' + data[i].liked + '</td><td>' + data[i].gameid + '</td><td>' + data[i].gameimage + '</td><td>' + data[i].cname + '</td><td>' + data[i].ename + '</td><td>' + data[i].score + '</td> <td>' + data[i].developer + '</td> <td>' + data[i].date + '</td><td>' + data[i].profile + '</td><td>' + data[i].category + '</td>' + tedite;
-                tcheckbox += tds;
+                let tds = tcheckbox + '<td>' + data[i].liked + '</td><td>' + data[i].gameid + '</td><td>' + data[i].gameimage + '</td><td>' + data[i].cname + '</td><td>' + data[i].ename + '</td><td>' + data[i].score + '</td> <td>' + data[i].developer + '</td> <td>' + data[i].date + '</td><td>' + data[i].category + '</td>' + tedite;
+                html += tds;
             }
-            $("#content").html(tcheckbox);
+            $("#content_games").html(html);
         })
     })
 </script>
@@ -42,29 +43,28 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
+                    <div class="container table-responsive">
+                        <table class="table layui-table-fixed table-bordered table-hover table-light">
                             <thead>
                             <tr>
-                                <th>
+                                <th class="col">
                                     <label class="lyear-checkbox checkbox-primary">
                                         <input type="checkbox" id="check-all"><span></span>
                                     </label>
                                 </th>
-                                <th>点赞数</th>
-                                <th>游戏ID</th>
-                                <th>游戏图片</th>
-                                <th>中文名称</th>
-                                <th>英文名称</th>
-                                <th>评分</th>
-                                <th>开发商</th>
-                                <th>发行日期</th>
-                                <th>游戏简介</th>
-                                <th>游戏分类</th>
-                                <th>操作</th>
+                                <th class="col-lg">点赞数</th>
+                                <th class="col-lg">游戏ID</th>
+                                <th class="col-lg">游戏图片</th>
+                                <th class="col-lg">中文名称</th>
+                                <th class="col-lg">英文名称</th>
+                                <th class="col-lg">评分</th>
+                                <th class="col-lg">开发商</th>
+                                <th class="col-lg">发行日期</th>
+                                <th class="col-lg">游戏分类</th>
+                                <th class="col-lg">操作</th>
                             </tr>
                             </thead>
-                            <tbody id="content">
+                            <tbody id="content_games">
 
                             <tr>
                                 <td>
