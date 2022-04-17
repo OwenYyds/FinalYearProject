@@ -5,8 +5,13 @@
             let tcheckbox = '<tr><td class=""><label class="lyear-checkbox checkbox-primary"> <input type="checkbox" name="ids[]" value="1"><span></span></label> </td>';
             let tedite = '<td><div class="btn-group"> <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a><a class="btn btn-xs btn-default" href="#!" title="查看" data-toggle="tooltip"><i class="mdi mdi-eye"></i></a> <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a></div></td></tr>';
             for (let i = 0; i < data.length; i++) {
-                let tds = tcheckbox + '<td>' + data[i].liked + '</td><td>' + data[i].gameid + '</td><td>' + data[i].gameimage + '</td><td>' + data[i].cname + '</td><td>' + data[i].ename + '</td><td>' + data[i].score + '</td> <td>' + data[i].developer + '</td> <td>' + data[i].date + '</td><td>' + data[i].category + '</td>' + tedite;
+                let tds = tcheckbox + '<td>' + data[i].liked + '</td><td>' + data[i].gameid + '</td><td id="gameImg">'+data[i].gameimage+'</td><td>' + data[i].cname + '</td><td>' + data[i].ename + '</td><td>' + data[i].score + '</td> <td>' + data[i].developer + '</td> <td>' + data[i].date + '</td><td>' + data[i].category + '</td>' + tedite;
                 html += tds;
+                // $("#gameImg").css({
+                //     "background": "url(../images/GameImage/" + data[i].gameimage,
+                //     "background-size": "cover",
+                //     "background-position": "center center"
+                // })
             }
             $("#content_games").html(html);
         })
@@ -43,8 +48,8 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="container table-responsive">
-                        <table class="table layui-table-fixed table-bordered table-hover table-light">
+                    <div class="container">
+                        <table class="table table-responsive layui-table-fixed table-bordered table-hover table-light">
                             <thead>
                             <tr>
                                 <th class="col">
