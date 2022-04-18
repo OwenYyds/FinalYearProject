@@ -177,10 +177,10 @@ public class UserController {
 
     //用id查找用户
     @GetMapping("{ids}")
-    public List<User> getUserNicknameByIds(@PathVariable Integer ids) {
-        if (ids != null) {
+    public List<User> getUserNicknameByIds(@PathVariable Integer id) {
+        if (id != null) {
             QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-            QueryWrapper<User> userid = userQueryWrapper.eq("userid", ids).select("nickname");
+            QueryWrapper<User> userid = userQueryWrapper.eq("userid", id).select("nickname");
 //            return userService.listByIds();
             return null;
         } else {
