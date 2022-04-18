@@ -98,13 +98,12 @@ public class UserController {
 
     //登出
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().invalidate();
         Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         System.out.println("推出了");
-        return "L&R.html";
     }
 
 
