@@ -67,7 +67,6 @@ function allGameLoad() {
                 data.push(element);
             }
             $('.gameList').empty().append(data.join(''));
-
         }
     })
 }

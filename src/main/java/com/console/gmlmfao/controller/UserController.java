@@ -189,7 +189,7 @@ public class UserController {
     }
 
     //添加到用户收藏
-    @PostMapping("/collection" + "{gid}" + "{uid}")
+    @PostMapping("/collection/{gid}/{uid}")
     public boolean addGameIdToUserCollect(@PathVariable Integer gid, @PathVariable String uid) {
         if (gid != null) {
             QueryWrapper<User> userQueryWrapper = new QueryWrapper<User>();

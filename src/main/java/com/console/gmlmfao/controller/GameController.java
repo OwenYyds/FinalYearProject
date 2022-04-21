@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.console.gmlmfao.pojo.Game;
 import com.console.gmlmfao.pojo.Post;
 import com.console.gmlmfao.service.IGameService;
+import com.console.gmlmfao.service.impl.GameServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,13 @@ public class GameController {
 
     @GetMapping("getAllGameByPage/{CurrentPage}/{PageSize}")
     public IPage<Game> getAllGamesByPage(@PathVariable int CurrentPage, @PathVariable int PageSize) {
-        IPage page = new Page(CurrentPage,PageSize);
+        IPage page = new Page(CurrentPage, PageSize);
         return gameService.page(page);
+    }
+
+    @DeleteMapping("delete/{gameId}")
+    public boolean deleteGameById(@PathVariable Integer gameId) {
+        return gameService.removeById(gameId);
     }
 
     @PostMapping("search")
@@ -93,17 +99,16 @@ public class GameController {
 
     }
 
-
     @PostMapping("/addLikedNum")
     public boolean updateGameByLiked(HttpServletRequest request, HttpServletResponse response) {
         Integer gameid = Integer.valueOf(request.getParameter("gameid"));
         Integer liked = Integer.valueOf(request.getParameter("liked"));
-        if (gameid>0){
+        if (gameid > 0) {
             Game game = new Game();
             game.setLiked(liked);
             QueryWrapper<Game> plus1 = new QueryWrapper<Game>().eq("gameid", gameid);
             return gameService.update(game, plus1);
-        }else {
+        } else {
             return false;
         }
     }

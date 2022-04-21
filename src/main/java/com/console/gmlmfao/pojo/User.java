@@ -1,5 +1,7 @@
 package com.console.gmlmfao.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Data
 public class User {
+    @TableId(value = "userid",type = IdType.AUTO)
     private Integer userid;
     private String username;
     private String password;
