@@ -70,9 +70,22 @@ $(function () {
     })
 
 
+    $.get("/news/getNews", function (data) {
+        let newsAr;
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let singleNews = '<div class="nt-item"><span class="racing">' + data[i].title + '</span>' + data[i].content + '</div>'
+                newsAr += singleNews;
+            }
+        }else {
+            layer.msg("圈内动态服务器连接失败！！")
+        }
+        $("#news").html(newsAr);
+    })
+
 })
 
-$(".hotGame-card").on("click",".hotGame-card",function (){
+$(".hotGame-card").on("click", ".hotGame-card", function () {
     console.log()
 })
 
