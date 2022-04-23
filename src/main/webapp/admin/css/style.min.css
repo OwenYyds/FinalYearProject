@@ -2923,7 +2923,8 @@ dd, dt {
     margin-right: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 16px;
+    font-size: 25px;
+    color: #1b4b08;
 }
 
 /* 头像相关 */
