@@ -21,15 +21,15 @@ $(function () {
         } else {
             layer.msg("圈内动态服务器连接失败！！")
         }
-        $("#feed").append(newsAr);
+        $("#feed").html(newsAr);
     })
 
     $('.news-ticker').marquee({
         duration: 10000,
-        speed:100,
         delayBeforeStart: 0,
         direction: 'left',
         duplicated: true,
+        pauseOnHover : true
     });
     $('.set-bg').each(function () {
         var bg = $(this).data('setbg');

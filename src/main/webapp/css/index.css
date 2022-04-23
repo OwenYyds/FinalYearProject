@@ -299,9 +299,9 @@ a{
     padding: 1rem 2rem;
 
 }
-.carousel-caption{
-    background-color: rgba(0, 0, 0, 0.5);
-}
+/*.carousel-caption{*/
+/*    background-color: rgba(0, 0, 0, 0.5);*/
+/*}*/
 .news-list,.news-list li{
     list-style: none;
 }
