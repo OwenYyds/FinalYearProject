@@ -310,9 +310,12 @@ a{
     overflow-y: auto;
 }
 .news-list li{
-    color: #8395a7;
+    color: rgba(28, 116, 53, 0.8);
     padding: 0.5rem 0.5rem;
     border-bottom: 1px solid #bdc3c7;
+}
+.news-list a{
+    color: rgba(28, 116, 53, 0.8);
 }
 
 nav ~ .nav-hr{

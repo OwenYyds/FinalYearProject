@@ -108,7 +108,7 @@ function showNews() {
     $.get("/", function (data) {
         if (data.length > 0) {
             for (let i = 0; i < data.length; i++) {
-                let singleNew = '<li><a href="'+data[i].link+'">'+data[i].content+'</a></li>';
+                let singleNew = '<li><a href="' + data[i].link + '">' + data[i].content + '</a></li>';
                 $("#newsArea").append(singleNew);
             }
         } else {
@@ -139,6 +139,19 @@ $(function () {
             layer.msg("服务器故障！！")
         }
         $("#feed").html(newsAr);
+    })
+
+    $.get("/news/getAll", function (data) {
+        let newsArea = '';
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let singleNew = '<li><a class="ui-state-hover" href="' + data[i].link + '">' + data[i].content + '</a></li>';
+                newsArea += singleNew;
+            }
+            $("#newsArea").html(newsArea);
+        } else {
+            layer.alert("服务器故障");
+        }
     })
 
     $('.news-ticker').marquee({
