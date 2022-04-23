@@ -1,6 +1,17 @@
 let timer2, img;
 
 $(function () {
+    $.get("/adver/getAll", function (data) {
+        let adArea = '';
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let adContent ='<div class="carousel-item"><a href="' + data[i].link + '"><img src="' + data[i].adimage + '" class="w-100"></a><div class="carousel-caption"><p>' + data[i].adtext + '</p></div></div>';
+                adArea += adContent;
+            }
+            $("#adArea").append(adArea);
+        }
+    })
+
     $.ajax({
         type: "GET",
         url: "/index/BannerContent",
@@ -77,11 +88,12 @@ $(function () {
                 let singleNews = '<div class="nt-item"><span class="racing">' + data[i].title + '</span>' + data[i].content + '</div>'
                 newsAr += singleNews;
             }
-        }else {
+        } else {
             layer.msg("圈内动态服务器连接失败！！")
         }
         $("#news").html(newsAr);
     })
+
 
 })
 
