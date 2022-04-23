@@ -4,9 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.console.gmlmfao.pojo.Game;
-import com.console.gmlmfao.pojo.Post;
 import com.console.gmlmfao.service.IGameService;
-import com.console.gmlmfao.service.impl.GameServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -65,37 +63,38 @@ public class GameController {
 
     @PostMapping("addGame")
     @ResponseBody
-    public String addGame(HttpServletRequest request, HttpServletResponse response) {
-        Integer gameid = Integer.valueOf(request.getParameter("gameID1"));
-        String gameimage = request.getParameter("gameImage");
-        String cname = request.getParameter("cname");
-        String ename = request.getParameter("ename");
-        String category = request.getParameter("category");
-        Integer score = Integer.valueOf(request.getParameter("score"));
-        String developer = request.getParameter("developer");
-        String date = request.getParameter("date");
-        String profile = request.getParameter("profile");
-        String deleteGameID = request.getParameter("deleteGameID");
-
-        Game game = new Game();
-        game.setGameid(gameid);
-        game.setGameimage(gameimage);
-        game.setCategory(category);
-        game.setCname(cname);
-        game.setEname(ename);
-        game.setDate(date);
-        game.setScore(score);
-        game.setDeveloper(developer);
-        game.setProfile(profile);
-
-        if (deleteGameID == null) {
-            gameService.save(game);
-            return "added one game";
-        } else {
-            gameService.removeById(deleteGameID);
-        }
-
-        return "Done";
+    public boolean addGame(@RequestBody Game game) {
+        return gameService.save(game);
+//        Integer gameid = Integer.valueOf(request.getParameter("gameID1"));
+//        String gameimage = request.getParameter("gameImage");
+//        String cname = request.getParameter("cname");
+//        String ename = request.getParameter("ename");
+//        String category = request.getParameter("category");
+//        Integer score = Integer.valueOf(request.getParameter("score"));
+//        String developer = request.getParameter("developer");
+//        String date = request.getParameter("date");
+//        String profile = request.getParameter("profile");
+//        String deleteGameID = request.getParameter("deleteGameID");
+//
+//        Game game = new Game();
+//        game.setGameid(gameid);
+//        game.setGameimage(gameimage);
+//        game.setCategory(category);
+//        game.setCname(cname);
+//        game.setEname(ename);
+//        game.setDate(date);
+//        game.setScore(score);
+//        game.setDeveloper(developer);
+//        game.setProfile(profile);
+//
+//        if (deleteGameID == null) {
+//            gameService.save(game);
+//            return "added one game";
+//        } else {
+//            gameService.removeById(deleteGameID);
+//        }
+//
+//        return "Done";
 
     }
 
