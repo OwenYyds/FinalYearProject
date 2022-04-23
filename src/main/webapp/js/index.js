@@ -12,7 +12,7 @@ $(function () {
         }
     })
     $.get("/news/getAllNews", function (data) {
-        let newsAr;
+        let newsAr = '';
         if (data.length > 0) {
             for (let i = 0; i < data.length; i++) {
                 let singleNews = '<div class="nt-item"><span class="racing">' + data[i].title + '</span>' + data[i].content + '</div>'
@@ -21,15 +21,15 @@ $(function () {
         } else {
             layer.msg("圈内动态服务器连接失败！！")
         }
-        $("#news").html(newsAr);
+        $("#feed").append(newsAr);
     })
 
     $('.news-ticker').marquee({
-        duration: 1000,
+        duration: 10000,
+        speed:100,
         delayBeforeStart: 0,
-        direction: 'right',
+        direction: 'left',
         duplicated: true,
-        loop: -1
     });
     $('.set-bg').each(function () {
         var bg = $(this).data('setbg');
