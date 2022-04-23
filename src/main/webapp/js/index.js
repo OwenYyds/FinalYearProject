@@ -157,6 +157,7 @@ $(function () {
     $('.news-ticker').marquee({
         duration: 10000,
         delayBeforeStart: 0,
+        speed:300,
         direction: 'left',
         duplicated: true,
         pauseOnHover: true
