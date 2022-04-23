@@ -98,13 +98,12 @@ public class UserController {
 
     //登出
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().invalidate();
         Cookie cookie = new Cookie("token", null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         System.out.println("推出了");
-        return "L&R.html";
     }
 
 
@@ -178,10 +177,10 @@ public class UserController {
 
     //用id查找用户
     @GetMapping("{ids}")
-    public List<User> getUserNicknameByIds(@PathVariable Integer ids) {
-        if (ids != null) {
+    public List<User> getUserNicknameByIds(@PathVariable Integer id) {
+        if (id != null) {
             QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-            QueryWrapper<User> userid = userQueryWrapper.eq("userid", ids).select("nickname");
+            QueryWrapper<User> userid = userQueryWrapper.eq("userid", id).select("nickname");
 //            return userService.listByIds();
             return null;
         } else {
@@ -190,7 +189,7 @@ public class UserController {
     }
 
     //添加到用户收藏
-    @PostMapping("/collection" + "{gid}" + "{uid}")
+    @PostMapping("/collection/{gid}/{uid}")
     public boolean addGameIdToUserCollect(@PathVariable Integer gid, @PathVariable String uid) {
         if (gid != null) {
             QueryWrapper<User> userQueryWrapper = new QueryWrapper<User>();

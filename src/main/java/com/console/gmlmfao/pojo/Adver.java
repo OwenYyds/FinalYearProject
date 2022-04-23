@@ -5,9 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 @Data
-public class Carousel {
-    @TableId(value = "gameid",type = IdType.AUTO)
-    private Integer gameid;
-    private String adtext;
+public class Adver {
+    @TableId(value = "id",type = IdType.AUTO)
+    private Integer id;
     private String adimage;
+    private String adtext;
+    private String link;
 }

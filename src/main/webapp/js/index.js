@@ -1,6 +1,42 @@
 let timer2, img;
 
 $(function () {
+    $.get("/adver/getAll", function (data) {
+        let adArea = '';
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let adContent = '<div class="carousel-item"><a href="' + data[i].link + '"><img src="' + data[i].adimage + '" class="w-100"></a><div class="carousel-caption"><p>' + data[i].adtext + '</p></div></div>';
+                adArea += adContent;
+            }
+            $("#adArea").append(adArea);
+        }
+    })
+    $.get("/news/getAllNews", function (data) {
+        let newsAr = '';
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let singleNews = '<div class="nt-item"><span class="racing">' + data[i].title + '</span>' + data[i].content + '</div>'
+                newsAr += singleNews;
+            }
+        } else {
+            layer.msg("圈内动态服务器连接失败！！")
+        }
+        $("#feed").html(newsAr);
+    })
+
+    $('.news-ticker').marquee({
+        duration: 10000,
+        delayBeforeStart: 0,
+        direction: 'left',
+        duplicated: true,
+        pauseOnHover : true
+    });
+    $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+    });
+
+
     $.ajax({
         type: "GET",
         url: "/index/BannerContent",
@@ -72,24 +108,8 @@ $(function () {
 
 })
 
-$(".hotGame-card").on("click",".hotGame-card",function (){
+$(".hotGame-card").on("click", ".hotGame-card", function () {
     console.log()
-})
-
-
-$(function () {
-    $('.news-ticker').marquee({
-        duration: 10000,
-        //gap in pixels between the tickers
-        //gap: 200,
-        delayBeforeStart: 0,
-        direction: 'left',
-        duplicated: true
-    });
-    $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
-    });
 })
 
 

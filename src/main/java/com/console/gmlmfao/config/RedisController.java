@@ -1,4 +1,4 @@
-package com.console.gmlmfao.controller;
+package com.console.gmlmfao.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

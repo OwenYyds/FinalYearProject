@@ -1,9 +1,9 @@
 
 <div id="userInfoHidden">
-    <div id="loginUser" type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">
+    <button id="loginUser" type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">
         &emsp;&emsp;
-    </div>
-    <ul class="dropdown-menu">
+    </button>
+    <ul class="dropdown-menu" style="right: 345px;left: 868px">
         <li><a id="personal" class="dropdown-item" href="personalInfo.html">个人信息</a></li>
         <li><a id="logout" class="dropdown-item" href="javascript:location.href='users/logout';">退出</a></li>
     </ul>
@@ -15,9 +15,9 @@
     <li class="nav-item nav-list-style userindex">
         <a id="main" href="index.html" class="nav-link ">主页</a>
     </li>
-    <li class="nav-item nav-list-style">
-        <a id="kinect" href="kinect.html" class="nav-link">Kinect</a>
-    </li>
+<!--    <li class="nav-item nav-list-style">-->
+<!--        <a id="kinect" href="kinect.html" class="nav-link">Kinect</a>-->
+<!--    </li>-->
     <li class="nav-item nav-list-style">
         <a id="share" href="share.html" class="nav-link">Share</a>
     </li>
@@ -25,3 +25,36 @@
         <a id="all" href="allGames.html" class="nav-link" id="introducebtn">所有游戏</a>
     </li>
 </ul>
+
+
+<script>
+    $(function (){
+        checkUserIsLogin();
+    })
+    $("#logout").click(function () {
+        $.get("/users/logout", {}, function () {
+            window.location.href = "L&R.html";
+        })
+    })
+    function checkUserIsLogin() {
+        $.get("/users/getUser", {}, function (data) {
+            if (data.length < 1) {
+                $("#userInfoHidden").css({"display": "none"});
+                console.log("游客状态")
+                console.log("nonUser")
+            } else {
+                console.log("登录成功")
+                // console.log(data.username)
+                // console.log("userFound")
+                $("#hidden").css({"display": "none"});
+                // $("#userInfoHidden").removeAttr("style");
+                $("#loginUser").css({
+                    "background": "url(../images/HeadImage/" + data.head,
+                    "background-size": "cover",
+                    "background-position": "center center"
+                    // "display":"inline-block"
+                });
+            }
+        })
+    }
+</script>

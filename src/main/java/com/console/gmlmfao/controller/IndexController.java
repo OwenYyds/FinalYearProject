@@ -29,7 +29,7 @@ public class IndexController {
 //        Game game = null;
         List<Game> list = gameService.selectJoinList(Game.class,
                 new MPJQueryWrapper<>()
-                        .select("gameid", "cname", "gameimage")
+                        .select("*")
                         .innerJoin("hot_game h on h.hotgameid = t.gameid"));
 
 //        for (Game hotGame : list) {

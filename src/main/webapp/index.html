@@ -91,10 +91,8 @@
 <div class="latest-news-section">
     <div class="ln-title">XBOX 最新动态</div>
     <div class="news-ticker">
-        <div class="news-ticker-contant">
-            <div class="nt-item"><span class="new">即将发售</span>《光环：无限》将于2021年12月8日发售。</div>
-            <div class="nt-item"><span class="strategy">跳票</span>《赛博朋克2077》次世代更新跳票到2022年3月。</div>
-            <div class="nt-item"><span class="racing">微软</span>《双人成行》现加入XBOX GAME PASS ！</div>
+        <div id="feed" class="news-ticker-contant">
+            <div class="nt-item"><span class="racing">育碧</span>UBsoft 即将加入XGP 游戏阵容！！</div>
         </div>
     </div>
 </div>
@@ -102,7 +100,7 @@
 <div class="container-fluid hot-game">
     <div class="container hot-container">
         <div class="hot-game-header animal-left">
-            <h2><i class="fa fa-free-code-camp" aria-hidden="true"></i>热门游戏 <a href="allGames.html">更多游戏-></a></h2>
+            <h2><i class="fa fa-free-code-camp" aria-hidden="true"></i>热门游戏 <a href="allGames.html">全部游戏-></a></h2>
             <hr class="hot-hr">
         </div>
         <div class="hot-game-content row">
@@ -161,35 +159,24 @@
 <div class="container-fluid topline">
     <div class="container">
         <div class="top-line-header animal-left">
-            <h2><i class="fa fa-free-code-camp" aria-hidden="true"></i>最新资讯 <a href="#">查看更多-></a></h2>
+            <h2><i class="fa fa-free-code-camp" aria-hidden="true"></i>游戏周边 <a href="#">查看更多-></a></h2>
             <hr class="hot-hr">
         </div>
         <div class="row top-line-content">
             <div class="col-lg-6 col-12 carousel-area">
-                <h2 class="carousel-title">近期热点</h2>
+                <h2 class="carousel-title">周边动态</h2>
                 <div class="carousel slide carousel-light" data-bs-ride="carousel" id="newsCarousel">
                     <ol class="carousel-indicators">
                         <li data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></li>
                         <li data-bs-target="#newsCarousel" data-bs-slide-to="1"></li>
                         <li data-bs-target="#newsCarousel" data-bs-slide-to="2"></li>
+                        <li data-bs-target="#newsCarousel" data-bs-slide-to="3"></li>
                     </ol>
-                    <div class="carousel-inner top-line-pictures">
+                    <div id="adArea" class="carousel-inner top-line-pictures">
                         <div class="carousel-item active">
-                            <img src="images/BannerImage/banner0.jpg" class="w-100">
+                            <a href="https://www.xbox.com/en-HK/accessories/controllers/20th-anniversary"><img src="https://assets.xboxservices.com/assets/33/99/33994e25-1ac0-44ee-bccc-83f50066f20f.jpg?n=7311043_Large-tout-0_1083x1222.jpg" class="w-100"></a>
                             <div class="carousel-caption">
-                                <p>最终幻想16即将发售</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/BannerImage/banner1.jpg" class="w-100">
-                            <div class="carousel-caption">
-                                <p>广告位招商</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/BannerImage/banner2.jpg" class="w-100">
-                            <div class="carousel-caption">
-                                <p>广告位招商</p>
+                                <p>Celebrate 20 years of Xbox together</p>
                             </div>
                         </div>
                     </div>
@@ -201,15 +188,11 @@
                     </a>
                 </div>
             </div>
+
+
             <div class="col-lg-6 col-12 news">
-                <h2 class="news-title">头条新闻</h2>
+                <h2 class="news-title">相关新闻</h2>
                 <ul class="news-list">
-                    <li>
-                        <span>震惊！男人沉默，女人流泪</span>
-                    </li>
-                    <li>
-                        <span>震惊！男人沉默，女人流泪</span>
-                    </li>
                     <li><span>震惊！男人沉默，女人流泪</span></li>
                     <li><span>震惊！男人沉默，女人流泪</span></li>
                     <li><span>震惊！男人沉默，女人流泪</span></li>
@@ -230,10 +213,10 @@
 
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery.marquee.min.js"></script>
+<script src="js/animate.js"></script>
 <script src="utils/layui.js"></script>
 <script src="js/scrollreveal.min.js"></script>
-<script src="js/animate.js"></script>
-<script src="js/jquery.marquee.min.js"></script>
 <script src="js/index.js"></script>
 <script src="js/page.js"></script>
 </body>
