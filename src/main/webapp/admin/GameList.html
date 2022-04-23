@@ -3,31 +3,14 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-toolbar clearfix">
-                    <form class="pull-right search-bar" method="get" action="#!" role="form">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <input type="hidden" name="search_field" id="search-field" value="title">
-                                <button class="btn btn-default dropdown-toggle" id="search-btn" data-toggle="dropdown"
-                                        type="button" aria-haspopup="true" aria-expanded="false">
-                                    标题 <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a tabindex="-1" href="javascript:void(0)" data-field="title">标题</a></li>
-                                    <li><a tabindex="-1" href="javascript:void(0)" data-field="cat_name">栏目</a></li>
-                                </ul>
-                            </div>
-                            <input type="text" class="form-control" value="" name="keyword" placeholder="请输入名称">
-                        </div>
-                    </form>
                     <div class="toolbar-btn-action">
                         <a class="btn btn-primary m-r-5 " data-toggle="modal" data-target="#game-add" href="#!"><i
                                 class="mdi mdi-plus"></i> 新增</a>
-                        <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
                     </div>
                 </div>
                 <div class="card-body">
 
-                    <div class="container">
+                    <div class="container-fluid">
                         <table class="table table-responsive layui-table-fixed table-bordered table-hover table-light">
                             <thead>
                             <tr>
@@ -49,7 +32,6 @@
                             </tr>
                             </thead>
                             <tbody id="content_games">
-
                             <tr>
                                 <td>
                                     <label class="lyear-checkbox checkbox-primary">
@@ -103,7 +85,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="d-flex">
+                    <form id="form" class="d-flex">
                         <input type="number" placeholder="游戏ID" class="form-control my-3" name="gameID1">
                         <input type="text" placeholder="游戏图片路径" name="gameImage" class="form-control my-3">
                         <input type="text" placeholder="游戏中文名称" name="Cname" class="form-control my-3">
@@ -124,11 +106,11 @@
                         <input type="date" name="date" class="form-control my-3">
                         <textarea name="profile" class="form-control my-3" rows="3" placeholder="游戏简介"
                                   id="profile"></textarea>
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                    <button class="btn btn-primary" type="submit">添加</button>
+                    <button id="add" class="btn btn-primary" type="submit">添加</button>
                 </div>
             </div>
         </div>
@@ -137,12 +119,26 @@
 </div>
 
 <script>
+
+
     $(function () {
+        getGameList()
+
+        $("#add").click(function () {
+            // $("#form").submit();
+            let a=$("#form").text();
+            console.log(a);
+            // $.post("/games/addGame",)
+            // console.log("!1111")
+        })
+    })
+
+    function getGameList() {
         $.get("/games/getAll/", function (data) {
             let html = '';
             let tedite = '<td><div class="btn-group"> <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a><a class="btn btn-xs btn-default" href="#!" title="查看" data-toggle="tooltip"><i class="mdi mdi-eye"></i></a> <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a></div></td></tr>';
             for (let i = 0; i < data.length; i++) {
-                let tcheckbox = '<tr><td class=""><label class="lyear-checkbox checkbox-primary"> <input type="checkbox" name="ids[]" value=""><span></span></label> </td>';
+                let tcheckbox = '<tr><td class=""><label class="lyear-checkbox checkbox-primary"> <input type="checkbox" name="ids[]" value="' + data[i].gameid + '"><span></span></label> </td>';
                 let tds = tcheckbox + '<td>' + data[i].liked + '</td><td>' + data[i].gameid + '</td><td id="gameImg">' + data[i].gameimage + '</td><td>' + data[i].cname + '</td><td>' + data[i].ename + '</td><td>' + data[i].score + '</td> <td>' + data[i].developer + '</td> <td>' + data[i].date + '</td><td>' + data[i].category + '</td>' + tedite;
                 html += tds;
 
@@ -154,5 +150,5 @@
             }
             $("#content_games").html(html);
         })
-    })
+    }
 </script>
