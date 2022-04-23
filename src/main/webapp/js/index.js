@@ -1,117 +1,9 @@
 let timer2, img;
 
-$(function () {
-    $.get("/adver/getAll", function (data) {
-        let adArea = '';
-        if (data.length > 0) {
-            for (let i = 0; i < data.length; i++) {
-                let adContent = '<div class="carousel-item"><a href="' + data[i].link + '"><img src="' + data[i].adimage + '" class="w-100"></a><div class="carousel-caption"><p>' + data[i].adtext + '</p></div></div>';
-                adArea += adContent;
-            }
-            $("#adArea").append(adArea);
-        }
-    })
-    $.get("/news/getAllNews", function (data) {
-        let newsAr = '';
-        if (data.length > 0) {
-            for (let i = 0; i < data.length; i++) {
-                let singleNews = '<div class="nt-item"><span class="racing">' + data[i].title + '</span>' + data[i].content + '</div>'
-                newsAr += singleNews;
-            }
-        } else {
-            layer.msg("圈内动态服务器连接失败！！")
-        }
-        $("#feed").html(newsAr);
-    })
-
-    $('.news-ticker').marquee({
-        duration: 10000,
-        delayBeforeStart: 0,
-        direction: 'left',
-        duplicated: true,
-        pauseOnHover : true
-    });
-    $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
-    });
-
-
-    $.ajax({
-        type: "GET",
-        url: "/index/BannerContent",
-        data: {},
-        dataType: "json",
-        success: function (res) {
-            console.log(res);
-            let dataImage = [];
-            for (let i = 0; i < res.length; i++) {
-                let imgElement = `<img class="img" src="../images/BannerImage/${res[i]['adimage']}">`
-                dataImage.push(imgElement);
-            }
-            $(".banner").empty().append(dataImage.join(''));
-            let width = window.innerWidth;
-            init(width, res);
-            bannerControl(width, res);
-            textShow();
-            window.addEventListener('resize', function () {
-                clearInterval(timer2);
-                timer2 = setInterval(function () {
-                    width = $(window).width();
-                    init(width, res);
-                    bannerControl(width, res);
-                }, 4000)
-            })
-        },
-        error: function () {
-            layer.msg("加载数据失败");
-        }
-    })
-
-    $.ajax({
-        type: "GET",
-        url: "/index/hotgames",
-        data: {},
-        dataType: "json",
-        success: function (res) {
-            // console.log(res[0].gameimage)
-            // console.log(res[0].cname)
-
-            $(".hot-game-bg").each(function (index) {
-                $(this).css({
-                    "background": "url(../images/GameImage/" + res[index].gameimage,
-                    "background-size": "cover",
-                    "background-position": "center center"
-                })
-                // console.log(index);
-            })
-            $(".hot-game-text").each(function (index) {
-                $(this).text(res[index].cname);
-            })
-
-            // let hotGameList = '<div class="hotGame-card col-lg-3 col-md-6 col-12"><div class="card-cover animal-top">'+hotgame+'</div></div>';
-            // let hotgame = '<div class="hot-game-bg"></div><div class="hot-game-text"></div>';
-            // for (let i = 0;i<res.length;i++){
-            //     $(".hot-game-bg").css({
-            //         "background": "url(../images/GameImage/" + res.gameimage,
-            //         "background-size": "cover",
-            //         "background-position": "center center"
-            //     })
-            // }
-
-        },
-        error: function () {
-            layer.msg("加载数据失败");
-        }
-    })
-
-
-})
 
 $(".hotGame-card").on("click", ".hotGame-card", function () {
     console.log()
 })
-
 
 function init(width, res) {
     let banner = document.getElementsByClassName('banner')[0];
@@ -211,5 +103,126 @@ function textShow() {
         }, 500
     )
 }
+
+function showNews() {
+    $.get("/", function (data) {
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let singleNew = '<li><a href="'+data[i].link+'">'+data[i].content+'</a></li>';
+                $("#newsArea").append(singleNew);
+            }
+        } else {
+            layer.msg("服务器故障！！！！");
+        }
+    })
+}
+
+$(function () {
+    $.get("/adver/getAll", function (data) {
+        let adArea = '';
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let adContent = '<div class="carousel-item"><a href="' + data[i].link + '"><img src="' + data[i].adimage + '" class="w-100"></a><div class="carousel-caption"><p>' + data[i].adtext + '</p></div></div>';
+                adArea += adContent;
+            }
+            $("#adArea").append(adArea);
+        }
+    })
+    $.get("/feed/getAllFeed", function (data) {
+        let newsAr = '';
+        if (data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                let singleNews = '<div class="nt-item"><span class="racing">' + data[i].title + '</span>' + data[i].content + '</div>'
+                newsAr += singleNews;
+            }
+        } else {
+            layer.msg("服务器故障！！")
+        }
+        $("#feed").html(newsAr);
+    })
+
+    $('.news-ticker').marquee({
+        duration: 10000,
+        delayBeforeStart: 0,
+        direction: 'left',
+        duplicated: true,
+        pauseOnHover: true
+    });
+    $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+    });
+
+
+    $.ajax({
+        type: "GET",
+        url: "/index/BannerContent",
+        data: {},
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
+            let dataImage = [];
+            for (let i = 0; i < res.length; i++) {
+                let imgElement = `<img class="img" src="../images/BannerImage/${res[i]['adimage']}">`
+                dataImage.push(imgElement);
+            }
+            $(".banner").empty().append(dataImage.join(''));
+            let width = window.innerWidth;
+            init(width, res);
+            bannerControl(width, res);
+            textShow();
+            window.addEventListener('resize', function () {
+                clearInterval(timer2);
+                timer2 = setInterval(function () {
+                    width = $(window).width();
+                    init(width, res);
+                    bannerControl(width, res);
+                }, 4000)
+            })
+        },
+        error: function () {
+            layer.msg("加载数据失败");
+        }
+    })
+
+    $.ajax({
+        type: "GET",
+        url: "/index/hotgames",
+        data: {},
+        dataType: "json",
+        success: function (res) {
+            // console.log(res[0].gameimage)
+            // console.log(res[0].cname)
+
+            $(".hot-game-bg").each(function (index) {
+                $(this).css({
+                    "background": "url(../images/GameImage/" + res[index].gameimage,
+                    "background-size": "cover",
+                    "background-position": "center center"
+                })
+                // console.log(index);
+            })
+            $(".hot-game-text").each(function (index) {
+                $(this).text(res[index].cname);
+            })
+
+            // let hotGameList = '<div class="hotGame-card col-lg-3 col-md-6 col-12"><div class="card-cover animal-top">'+hotgame+'</div></div>';
+            // let hotgame = '<div class="hot-game-bg"></div><div class="hot-game-text"></div>';
+            // for (let i = 0;i<res.length;i++){
+            //     $(".hot-game-bg").css({
+            //         "background": "url(../images/GameImage/" + res.gameimage,
+            //         "background-size": "cover",
+            //         "background-position": "center center"
+            //     })
+            // }
+
+        },
+        error: function () {
+            layer.msg("加载数据失败");
+        }
+    })
+
+
+})
 
 

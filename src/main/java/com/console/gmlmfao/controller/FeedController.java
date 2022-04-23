@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/news")
-public class NewsController {
+@RequestMapping("/feed")
+public class FeedController {
 
     @Autowired
-    private IFeedService newsService;
+    private IFeedService feedService    ;
 
 
-    @GetMapping("getAllNews")
+    @GetMapping("getAllFeed")
     public List<Feed> getAll(){
-        return newsService.list();
+        return feedService.list();
     }
 }
