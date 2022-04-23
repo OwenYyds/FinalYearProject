@@ -4,14 +4,9 @@
             let html = '';
             let tedite = '<td><div class="btn-group"> <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a><a class="btn btn-xs btn-default" href="#!" title="查看" data-toggle="tooltip"><i class="mdi mdi-eye"></i></a> <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a></div></td></tr>';
             for (let i = 0; i < data.length; i++) {
-                let tcheckbox = '<tr><td class=""><label class="lyear-checkbox checkbox-primary"> <input type="checkbox" name="ids[]" value=""><span>' + data[i].id + '</span></label> </td>';
+                let tcheckbox = '<tr><td><label class="lyear-checkbox checkbox-primary"> <input type="checkbox" name="ids[]" value=""><span></span></label> </td>';
                 let tds = tcheckbox + '<td>' + data[i].id + '</td><td>' + data[i].title + '</td><td>' + data[i].content + ' </td><td>' + data[i].time + '</td> ' + tedite;
                 html += tds;
-                // $("#gameImg").css({
-                //     "background": "url(../images/GameImage/" + data[i].gameimage,
-                //     "background-size": "cover",
-                //     "background-position": "center center"
-                // })
             }
             $("#content_feed").html(html);
         })

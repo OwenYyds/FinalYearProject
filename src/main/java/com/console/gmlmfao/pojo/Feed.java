@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 @Data
-public class News {
+public class Feed {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     private String title;

@@ -1,7 +1,7 @@
 package com.console.gmlmfao.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.console.gmlmfao.pojo.News;
+import com.console.gmlmfao.pojo.Feed;
 
-public interface INewsService extends IService<News> {
+public interface IFeedService extends IService<Feed> {
 }
