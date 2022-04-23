@@ -4,9 +4,7 @@ package com.console.gmlmfao.controller;
 import com.console.gmlmfao.pojo.News;
 import com.console.gmlmfao.service.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,10 @@ public class NewsController {
     @GetMapping("getAll")
     public List<News> getAll(){
         return newsService.list();
+    }
+
+    @PostMapping("addNews")
+    public boolean addNews(@RequestBody News news){
+        return newsService.save(news);
     }
 }

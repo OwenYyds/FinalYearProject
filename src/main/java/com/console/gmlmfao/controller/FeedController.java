@@ -2,11 +2,10 @@ package com.console.gmlmfao.controller;
 
 
 import com.console.gmlmfao.pojo.Feed;
+import com.console.gmlmfao.pojo.News;
 import com.console.gmlmfao.service.IFeedService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +20,10 @@ public class FeedController {
     @GetMapping("getAllFeed")
     public List<Feed> getAll(){
         return feedService.list();
+    }
+
+    @PostMapping("addFeed")
+    public boolean addNews(@RequestBody Feed feed){
+        return feedService.save(feed);
     }
 }
