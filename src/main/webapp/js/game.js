@@ -212,8 +212,6 @@ function gameInfoShow() {
                                     }
                                 })
                             })
-
-
                             $("#likedBtn").click(function () {
                                 $(this).addClass("btn-info");
                                 $.post("/games/addLikedNum", {"liked": likedNum + 1, "gameid": gameid}, function (data) {

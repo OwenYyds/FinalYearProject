@@ -1,0 +1,14 @@
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (1, '关于次世代主机的购买', 'X这个平台类似于国内的得物，说白了也是二道贩子。但是因为海外XSX的价格较低，就算被黄牛加了一次价，还是比国行便宜，所以可以选择海淘。。。。点进去就能看到当前的最高出价了。StockX在买家出价后，会把价格发给卖家，如果卖家满意买家出的价格，就会自动成交。出价的时候记得点击添加折扣，把要到的新人优惠码填进去。注意，一定要注意价格，在不算邮费的情况下，保证机器的实际购买价格在清关日的汇率下低于4000人民币。', '2022-01-13', 2, 1);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (2, '111', '2222', '2022-01-12', 1, 2);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (3, '3213213', 'dsadsa', '2022-4-3 11:42:41', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (4, '532532', '532532523', '2022-4-3 12:30:49', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (5, 'feds更多s\'sgdsg', '公司的公司收到广泛的发生的', '2022-4-3 12:36:54', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (6, 'feds更多s\'sgdsg', '公司的公司收到广泛的发生的', '2022-4-3 12:44:09', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (7, '恶趣味我去热武器文如其人', '让我去让我去发生的范德萨士大夫大是大非第三方打撒', '2022-4-3 12:45:23', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (8, '容易和人', '热狗热', '2022-4-3 12:51:22', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (9, 'egg人梵蒂冈反对', '反对法的 的', '2022-4-3 12:57:21', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (10, '让粉丝士大夫', '大师傅大师傅但是', '2022-4-3 12:59:01', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (11, '6666', '44444', '2022-4-18 14:18:46', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (12, 'eqwewq', 'dsad ', '2022-4-23 23:09:15', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (13, '32321321', 'e12e12e12', '2022-4-24 9:37:50', 5, NULL);
+INSERT INTO `post` (`aid`, `title`, `content`, `time`, `uid`, `liked`) VALUES (14, '呃', '大苏打撒旦', '2022-4-24 15:09:42', 5, NULL);
